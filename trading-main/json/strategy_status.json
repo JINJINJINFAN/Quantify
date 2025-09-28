@@ -1,0 +1,23 @@
+{
+  "position": 0,
+  "entry_price": 0.0,
+  "position_quantity": 0.0,
+  "current_price": 0.2166,
+  "position_unrealized_pnl": 0.0,
+  "position_unrealized_pnl_percent": 0.0,
+  "high_point": 0,
+  "low_point": 0,
+  "entry_time": null,
+  "holding_periods": 0,
+  "trade_count": 0,
+  "win_count": 0,
+  "consecutive_losses": 0,
+  "consecutive_wins": 0,
+  "cooldown_treatment_active": false,
+  "cooldown_treatment_level": 0,
+  "position_size_reduction": 1.0,
+  "leverage": 5,
+  "position_value": 0.0,
+  "margin_value": 0.0,
+  "timestamp": "2025-09-04T00:53:26.649766"
+}

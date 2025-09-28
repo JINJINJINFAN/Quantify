@@ -1,0 +1,44 @@
+2025-08-29 17:27:11,508 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_web.log
+2025-08-29 17:27:12,064 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-29 17:27:12,074 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-29 17:27:12,075 - core.strategy - INFO - 策略状态文件不存在，使用默认状态
+2025-08-29 17:27:12,075 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-29 17:27:12,075 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-29 17:27:12,075 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-29 17:27:12,075 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 10000 USDT
+2025-08-29 17:27:12,076 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-29 17:27:12,076 - TradingSystem - INFO - 📡 Web模式：跳过信号处理器设置
+2025-08-29 17:27:12,076 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-29 17:27:12,076 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-29 17:27:12,076 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-29 17:27:12,076 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: web
+2025-08-30 22:32:18,620 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_web.log
+2025-08-30 22:32:20,892 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:32:20,894 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:32:20,894 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:32:20,894 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:32:20,895 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:32:20,895 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:32:20,895 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:32:20,895 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 200 USDT
+2025-08-30 22:32:20,895 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:32:20,895 - TradingSystem - INFO - 📡 Web模式：跳过信号处理器设置
+2025-08-30 22:32:20,895 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:32:20,895 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:32:20,895 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:32:20,895 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: web
+2025-08-30 22:33:47,256 - TradingSystem - INFO - 合约账户余额: 总=301.27, 可用=41.70
+2025-08-30 22:34:17,215 - TradingSystem - INFO - 合约账户余额: 总=301.28, 可用=42.09
+2025-08-30 22:34:47,326 - TradingSystem - INFO - 合约账户余额: 总=301.27, 可用=41.75
+2025-08-30 22:34:57,337 - TradingSystem - ERROR - 获取仓位失败: HTTPSConnectionPool(host='fapi.binance.com', port=443): Read timed out. (read timeout=10)
+2025-08-30 22:34:58,634 - TradingSystem - INFO - 合约账户余额: 总=301.27, 可用=41.42
+2025-08-30 22:35:18,019 - TradingSystem - INFO - 合约账户余额: 总=301.27, 可用=41.98
+2025-08-30 22:35:53,800 - TradingSystem - INFO - 合约账户余额: 总=301.27, 可用=42.03
+2025-08-30 22:35:55,760 - TradingSystem - INFO - 合约账户余额: 总=301.27, 可用=42.03
+2025-08-30 22:36:08,998 - TradingSystem - INFO - 合约账户余额: 总=301.27, 可用=42.05
+2025-08-30 22:36:11,887 - TradingSystem - INFO - 合约账户余额: 总=301.27, 可用=42.05
+2025-08-30 22:36:43,786 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:36:45,221 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:36:45,224 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:36:45,225 - TradingSystem - INFO - 🌐 Web模式启动 - 线程已启动，等待Web界面控制
+2025-08-30 22:36:46,598 - utils.telegram_notifier - INFO -  Telegram消息发送成功

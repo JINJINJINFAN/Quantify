@@ -1,0 +1,956 @@
+{% extends "base.html" %}
+
+{% block title %}账户信息 - 交易系统{% endblock %}
+{% block page_title %}账户信息{% endblock %}
+
+{% block content %}
+<!-- 账户概览 -->
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-wallet me-2"></i>账户概览
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- 核心资金信息 -->
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">当前资金</div>
+                            <div id="accountBalance" class="h4 mb-0 text-primary fw-bold">$0.00</div>
+                            <small class="text-muted">总资产</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">可用资金</div>
+                            <div id="availableBalance" class="h4 mb-0 text-success fw-bold">$0.00</div>
+                            <small class="text-muted">可交易</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">总盈亏</div>
+                            <div id="totalPnL" class="h4 mb-0 text-success fw-bold">$0.00</div>
+                            <small class="text-muted">收益率: <span id="totalReturn">0.00%</span></small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">今日盈亏</div>
+                            <div id="dailyPnL" class="h4 mb-0 text-info fw-bold">$0.00</div>
+                            <small class="text-muted">收益率: <span id="dailyReturn">0.00%</span></small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">交易次数</div>
+                            <div id="totalTrades" class="h4 mb-0 text-warning fw-bold">0</div>
+                            <small class="text-muted">总交易</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">胜率</div>
+                            <div id="winRate" class="h4 mb-0 text-info fw-bold">0.0%</div>
+                            <small class="text-muted">成功率</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">资金利用率</div>
+                            <div id="capitalUtilization" class="h4 mb-0 text-warning fw-bold">0.00%</div>
+                            <small class="text-muted">使用比例</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">保证金使用</div>
+                            <div id="marginUsed" class="h4 mb-0 text-info fw-bold">$0.00</div>
+                            <small class="text-muted">已占用</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 账户状态 -->
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card border-0 bg-gradient-light">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3 text-center">
+                                        <div class="status-icon mb-2">
+                                            <i id="accountStatusIcon" class="fas fa-check-circle fa-2x text-success"></i>
+                                        </div>
+                                        <div id="accountStatus" class="fw-bold">正常</div>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <div class="text-muted mb-1">交易模式</div>
+                                        <div id="tradingMode" class="h5 mb-0">模拟交易</div>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <div class="text-muted mb-1">杠杆倍数</div>
+                                        <div id="leverage" class="h5 mb-0">1x</div>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <div class="text-muted mb-1">初始资金</div>
+                                        <div id="initialCapital" class="h5 mb-0">$0.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 持仓信息 -->
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-pie me-2"></i>持仓信息
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <div class="position-icon mb-2">
+                            <i id="positionIcon" class="fas fa-chart-line fa-2x text-muted"></i>
+                        </div>
+                        <div id="positionStatus" class="fw-bold">无仓位</div>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <div class="text-muted mb-1">持仓方向</div>
+                        <div id="positionDesc" class="h5 mb-0">无仓位</div>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <div class="text-muted mb-1">开仓价格</div>
+                        <div id="entryPrice" class="h5 mb-0">$0.00</div>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <div class="text-muted mb-1">持仓数量</div>
+                        <div id="positionQuantity" class="h5 mb-0">0.0000</div>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <div class="text-muted mb-1">持仓价值</div>
+                        <div id="positionValue" class="h5 mb-0">$0.00</div>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <div class="text-muted mb-1">未实现盈亏</div>
+                        <div id="unrealizedPnL" class="h5 mb-0">$0.00</div>
+                        <small id="unrealizedPercent" class="text-muted">(0.00%)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Binance合约账户信息 -->
+<div class="row" id="binanceAccountSection" style="display: none;">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fab fa-bitcoin me-2"></i>Binance合约账户
+                    <span class="badge bg-danger ms-2" id="realTradingBadge" style="display: none;">
+                        <i class="fas fa-exclamation-triangle me-1"></i>真实交易模式
+                    </span>
+                    <button class="btn btn-sm btn-outline-primary float-end" onclick="loadBinanceAccount()">
+                        <i class="fas fa-sync-alt"></i> 刷新
+                    </button>
+                </h5>
+            </div>
+            <div class="card-body">
+                <div id="binanceAccountContent">
+                    <div class="text-center text-muted">
+                        <i class="fas fa-spinner fa-spin"></i> 加载中...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 模拟交易模式提示 -->
+<div class="row" id="simulationModeSection" style="display: none;">
+    <div class="col-12 mb-4">
+        <div class="card border-warning">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0">
+                    <i class="fas fa-info-circle me-2"></i>模拟交易模式
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h6 class="text-warning mb-2">
+                            <i class="fas fa-exclamation-triangle me-2"></i>当前为模拟交易模式
+                        </h6>
+                        <p class="mb-2">在模拟交易模式下，Binance合约账户信息将不会显示，因为系统不会连接到真实的Binance API。</p>
+                        <p class="mb-0">
+                            <strong>如需查看真实账户信息，请：</strong>
+                            <ul class="mb-0 mt-2">
+                                <li>确保已配置正确的Binance API密钥</li>
+                                <li>切换到真实交易模式</li>
+                                <li>检查API密钥权限是否包含合约交易</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-shield-alt fa-3x text-warning"></i>
+                        </div>
+                        <button class="btn btn-outline-warning btn-sm" onclick="window.location.href='/'">
+                            <i class="fas fa-cog me-1"></i>前往系统设置
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 交易统计详情 -->
+<div class="row">
+    <div class="col-md-8 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>交易统计详情
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>基础统计</h6>
+                        <div class="row mb-2">
+                            <div class="col-6">总交易次数:</div>
+                            <div class="col-6" id="totalTradesDetail">0</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-6">盈利交易:</div>
+                            <div class="col-6 text-success" id="winningTrades">0</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-6">亏损交易:</div>
+                            <div class="col-6 text-danger" id="losingTrades">0</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-6">今日交易:</div>
+                            <div class="col-6" id="dailyTrades">0</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>盈亏统计</h6>
+                        <div class="row mb-2">
+                            <div class="col-6">总盈利:</div>
+                            <div class="col-6 text-success" id="totalProfit">$0.00</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-6">总亏损:</div>
+                            <div class="col-6 text-danger" id="totalLoss">$0.00</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-6">盈亏比:</div>
+                            <div class="col-6" id="profitFactor">0.00</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-6">胜率:</div>
+                            <div class="col-6" id="winRateDetail">0.0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 风险指标 -->
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-shield-alt me-2"></i>风险指标
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <strong>已实现盈亏:</strong>
+                    </div>
+                    <div class="col-6" id="realizedPnL">$0.00</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <strong>未实现盈亏:</strong>
+                    </div>
+                    <div class="col-6" id="unrealizedPnLDetail">$0.00</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <strong>平均盈利:</strong>
+                    </div>
+                    <div class="col-6" id="avgProfit">$0.00</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <strong>最大回撤:</strong>
+                    </div>
+                    <div class="col-6" id="maxDrawdown">0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('账户信息页面开始初始化...');
+    loadAccountInfo();
+    
+    // 每30秒自动刷新账户信息
+    setInterval(loadAccountInfo, 30000);
+});
+
+// 加载账户信息 - 使用dashboard API确保数据一致性
+function loadAccountInfo() {
+    console.log('开始加载账户信息...');
+    
+    fetch('/api/dashboard')
+        .then(response => response.json())
+        .then(data => {
+            console.log('获取到的账户信息:', data);
+            
+            if (data.success) {
+                updateAccountDisplay(data.dashboard);
+            } else {
+                console.error('获取账户信息失败:', data.message);
+                showError('获取账户信息失败: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('加载账户信息时发生错误:', error);
+            showError('加载账户信息异常: ' + error.message);
+        });
+}
+
+// 更新账户显示 - 使用dashboard数据结构
+function updateAccountDisplay(dashboard) {
+    // 更新概览卡片
+    const accountBalanceElement = document.getElementById('accountBalance');
+    const availableBalanceElement = document.getElementById('availableBalance');
+    
+    if (accountBalanceElement) {
+        accountBalanceElement.textContent = '$' + dashboard.current_capital.toLocaleString('en-US', {minimumFractionDigits: 2});
+    }
+    if (availableBalanceElement) {
+        // 确保可用资金不超过当前资金
+        const availableCapital = Math.min(dashboard.available_capital, dashboard.current_capital);
+        availableBalanceElement.textContent = '$' + availableCapital.toLocaleString('en-US', {minimumFractionDigits: 2});
+        
+        // 根据可用资金比例设置颜色
+        const utilizationRatio = dashboard.current_capital > 0 ? (1 - availableCapital / dashboard.current_capital) : 0;
+        if (utilizationRatio > 0.8) {
+            availableBalanceElement.className = 'h4 mb-0 text-danger fw-bold';
+        } else if (utilizationRatio > 0.5) {
+            availableBalanceElement.className = 'h4 mb-0 text-warning fw-bold';
+        } else {
+            availableBalanceElement.className = 'h4 mb-0 text-success fw-bold';
+        }
+    }
+    
+    // 总盈亏
+    const totalPnLElement = document.getElementById('totalPnL');
+    if (totalPnLElement) {
+        totalPnLElement.textContent = '$' + dashboard.total_pnl.toLocaleString('en-US', {minimumFractionDigits: 2});
+        totalPnLElement.className = 'h4 mb-0 ' + (dashboard.total_pnl >= 0 ? 'text-success' : 'text-danger') + ' fw-bold';
+    }
+    
+    const totalReturnElement = document.getElementById('totalReturn');
+    if (totalReturnElement) {
+        totalReturnElement.textContent = dashboard.total_return_percent.toFixed(2) + '%';
+    }
+    
+    // 今日盈亏
+    const dailyPnLElement = document.getElementById('dailyPnL');
+    if (dailyPnLElement) {
+        dailyPnLElement.textContent = '$' + dashboard.daily_pnl.toLocaleString('en-US', {minimumFractionDigits: 2});
+        dailyPnLElement.className = 'h4 mb-0 ' + (dashboard.daily_pnl >= 0 ? 'text-info' : 'text-danger') + ' fw-bold';
+    }
+    
+    const dailyReturnElement = document.getElementById('dailyReturn');
+    if (dailyReturnElement) {
+        dailyReturnElement.textContent = dashboard.daily_return_percent.toFixed(2) + '%';
+    }
+    
+    // 交易统计
+    const totalTradesElement = document.getElementById('totalTrades');
+    if (totalTradesElement) {
+        totalTradesElement.textContent = dashboard.total_trades;
+    }
+    
+    const winRateElement = document.getElementById('winRate');
+    if (winRateElement) {
+        winRateElement.textContent = dashboard.win_rate.toFixed(1) + '%';
+    }
+    
+    // 资金利用率和保证金使用 - 修复计算逻辑
+    const currentCapital = dashboard.current_capital || 0;
+    const availableCapital = dashboard.available_capital || 0;
+    const marginUsed = Math.max(0, currentCapital - availableCapital);
+    
+    // 计算资金利用率
+    const capitalUtilization = currentCapital > 0 ? (marginUsed / currentCapital * 100) : 0;
+    const capitalUtilizationElement = document.getElementById('capitalUtilization');
+    if (capitalUtilizationElement) {
+        capitalUtilizationElement.textContent = capitalUtilization.toFixed(2) + '%';
+        // 根据利用率设置颜色
+        if (capitalUtilization > 80) {
+            capitalUtilizationElement.className = 'h4 mb-0 text-danger fw-bold';
+        } else if (capitalUtilization > 50) {
+            capitalUtilizationElement.className = 'h4 mb-0 text-warning fw-bold';
+        } else {
+            capitalUtilizationElement.className = 'h4 mb-0 text-success fw-bold';
+        }
+    }
+    
+    // 保证金使用
+    const marginUsedElement = document.getElementById('marginUsed');
+    if (marginUsedElement) {
+        marginUsedElement.textContent = '$' + marginUsed.toLocaleString('en-US', {minimumFractionDigits: 2});
+        // 根据保证金使用量设置颜色
+        if (marginUsed > currentCapital * 0.8) {
+            marginUsedElement.className = 'h4 mb-0 text-danger fw-bold';
+        } else if (marginUsed > currentCapital * 0.5) {
+            marginUsedElement.className = 'h4 mb-0 text-warning fw-bold';
+        } else {
+            marginUsedElement.className = 'h4 mb-0 text-info fw-bold';
+        }
+    }
+    
+
+    
+    // 账户状态
+    const accountStatusElement = document.getElementById('accountStatus');
+    const accountStatusIcon = document.getElementById('accountStatusIcon');
+    if (accountStatusElement && accountStatusIcon) {
+        if (dashboard.system_running) {
+            accountStatusElement.textContent = '正常';
+            accountStatusElement.className = 'fw-bold text-success';
+            accountStatusIcon.className = 'fas fa-check-circle fa-2x text-success';
+        } else {
+            accountStatusElement.textContent = '停止';
+            accountStatusElement.className = 'fw-bold text-danger';
+            accountStatusIcon.className = 'fas fa-times-circle fa-2x text-danger';
+        }
+    }
+    
+    // 交易模式
+    const tradingModeElement = document.getElementById('tradingMode');
+    if (tradingModeElement) {
+        if (dashboard.real_trading) {
+            tradingModeElement.textContent = '真实交易';
+            tradingModeElement.className = 'h5 mb-0 text-danger';
+            
+            // 显示Binance账户信息
+            const binanceSection = document.getElementById('binanceAccountSection');
+            const simulationSection = document.getElementById('simulationModeSection');
+            const realTradingBadge = document.getElementById('realTradingBadge');
+            
+            if (binanceSection) binanceSection.style.display = 'block';
+            if (simulationSection) simulationSection.style.display = 'none';
+            if (realTradingBadge) realTradingBadge.style.display = 'inline-block';
+            
+            // 加载Binance账户信息
+            loadBinanceAccount();
+            
+            // 每60秒自动刷新Binance账户信息
+            if (!window.binanceRefreshInterval) {
+                window.binanceRefreshInterval = setInterval(loadBinanceAccount, 60000);
+            }
+        } else {
+            tradingModeElement.textContent = '模拟交易';
+            tradingModeElement.className = 'h5 mb-0 text-warning';
+            
+            // 隐藏Binance账户信息，显示模拟交易提示
+            const binanceSection = document.getElementById('binanceAccountSection');
+            const simulationSection = document.getElementById('simulationModeSection');
+            const realTradingBadge = document.getElementById('realTradingBadge');
+            
+            if (binanceSection) binanceSection.style.display = 'none';
+            if (simulationSection) simulationSection.style.display = 'block';
+            if (realTradingBadge) realTradingBadge.style.display = 'none';
+            
+            // 清除Binance刷新定时器
+            if (window.binanceRefreshInterval) {
+                clearInterval(window.binanceRefreshInterval);
+                window.binanceRefreshInterval = null;
+            }
+        }
+    }
+    
+    const leverageElement = document.getElementById('leverage');
+    if (leverageElement) {
+        leverageElement.textContent = dashboard.leverage + 'x';
+    }
+    
+    const initialCapitalElement = document.getElementById('initialCapital');
+    if (initialCapitalElement) {
+        initialCapitalElement.textContent = '$' + dashboard.initial_capital.toLocaleString('en-US', {minimumFractionDigits: 2});
+    }
+    
+
+    
+    // 持仓信息
+    const positionStatusElement = document.getElementById('positionStatus');
+    const positionIcon = document.getElementById('positionIcon');
+    if (positionStatusElement && positionIcon) {
+        if (dashboard.current_position !== 0) {
+            positionStatusElement.textContent = '有仓位';
+            positionStatusElement.className = 'fw-bold text-success';
+            positionIcon.className = 'fas fa-chart-line fa-2x text-success';
+        } else {
+            positionStatusElement.textContent = '无仓位';
+            positionStatusElement.className = 'fw-bold text-muted';
+            positionIcon.className = 'fas fa-chart-line fa-2x text-muted';
+        }
+    }
+    
+    const positionDescElement = document.getElementById('positionDesc');
+    if (positionDescElement) {
+        positionDescElement.textContent = dashboard.position_desc;
+    }
+    
+    const entryPriceElement = document.getElementById('entryPrice');
+    if (entryPriceElement) {
+        entryPriceElement.textContent = '$' + dashboard.position_entry_price.toLocaleString('en-US', {minimumFractionDigits: 2});
+    }
+    
+    const positionQuantityElement = document.getElementById('positionQuantity');
+    if (positionQuantityElement) {
+        positionQuantityElement.textContent = dashboard.position_quantity.toFixed(4);
+    }
+    
+    const positionValueElement = document.getElementById('positionValue');
+    if (positionValueElement) {
+        positionValueElement.textContent = '$' + dashboard.position_value.toLocaleString('en-US', {minimumFractionDigits: 2});
+    }
+    
+    const unrealizedPnLElement = document.getElementById('unrealizedPnL');
+    const unrealizedPercentElement = document.getElementById('unrealizedPercent');
+    if (unrealizedPnLElement && unrealizedPercentElement) {
+        unrealizedPnLElement.textContent = '$' + dashboard.position_unrealized_pnl.toLocaleString('en-US', {minimumFractionDigits: 2});
+        unrealizedPercentElement.textContent = '(' + dashboard.position_unrealized_pnl_percent.toFixed(2) + '%)';
+        
+        if (dashboard.position_unrealized_pnl > 0) {
+            unrealizedPnLElement.className = 'h5 mb-0 text-success';
+            unrealizedPercentElement.className = 'text-muted text-success';
+        } else if (dashboard.position_unrealized_pnl < 0) {
+            unrealizedPnLElement.className = 'h5 mb-0 text-danger';
+            unrealizedPercentElement.className = 'text-muted text-danger';
+        } else {
+            unrealizedPnLElement.className = 'h5 mb-0 text-muted';
+            unrealizedPercentElement.className = 'text-muted';
+        }
+    }
+    
+    // 交易统计详情
+    const totalTradesDetailElement = document.getElementById('totalTradesDetail');
+    if (totalTradesDetailElement) {
+        totalTradesDetailElement.textContent = dashboard.total_trades;
+    }
+    
+    const winningTradesElement = document.getElementById('winningTrades');
+    if (winningTradesElement) {
+        winningTradesElement.textContent = dashboard.winning_trades;
+    }
+    
+    const losingTradesElement = document.getElementById('losingTrades');
+    if (losingTradesElement) {
+        losingTradesElement.textContent = dashboard.losing_trades;
+    }
+    
+    const dailyTradesElement = document.getElementById('dailyTrades');
+    if (dailyTradesElement) {
+        dailyTradesElement.textContent = dashboard.daily_trades;
+    }
+    
+    // 计算盈亏统计
+    const totalProfit = Math.max(dashboard.realized_pnl, 0);
+    const totalLoss = Math.abs(Math.min(dashboard.realized_pnl, 0));
+    
+    const totalProfitElement = document.getElementById('totalProfit');
+    if (totalProfitElement) {
+        totalProfitElement.textContent = '$' + totalProfit.toLocaleString('en-US', {minimumFractionDigits: 2});
+    }
+    
+    const totalLossElement = document.getElementById('totalLoss');
+    if (totalLossElement) {
+        totalLossElement.textContent = '$' + totalLoss.toLocaleString('en-US', {minimumFractionDigits: 2});
+    }
+    
+    const profitFactorElement = document.getElementById('profitFactor');
+    if (profitFactorElement) {
+        profitFactorElement.textContent = totalLoss > 0 ? (totalProfit / totalLoss).toFixed(2) : '0.00';
+    }
+    
+    const winRateDetailElement = document.getElementById('winRateDetail');
+    if (winRateDetailElement) {
+        winRateDetailElement.textContent = dashboard.win_rate.toFixed(1) + '%';
+    }
+    
+    // 风险指标
+    const realizedPnLElement = document.getElementById('realizedPnL');
+    if (realizedPnLElement) {
+        realizedPnLElement.textContent = '$' + dashboard.realized_pnl.toLocaleString('en-US', {minimumFractionDigits: 2});
+        realizedPnLElement.className = (dashboard.realized_pnl >= 0 ? 'text-success' : 'text-danger');
+    }
+    
+    const unrealizedPnLDetailElement = document.getElementById('unrealizedPnLDetail');
+    if (unrealizedPnLDetailElement) {
+        unrealizedPnLDetailElement.textContent = '$' + dashboard.unrealized_pnl.toLocaleString('en-US', {minimumFractionDigits: 2});
+        unrealizedPnLDetailElement.className = (dashboard.unrealized_pnl >= 0 ? 'text-success' : 'text-danger');
+    }
+    
+    // 计算平均盈利和最大回撤（这里使用简化计算）
+    const avgProfit = dashboard.total_trades > 0 ? totalProfit / dashboard.total_trades : 0;
+    const avgProfitElement = document.getElementById('avgProfit');
+    if (avgProfitElement) {
+        avgProfitElement.textContent = '$' + avgProfit.toLocaleString('en-US', {minimumFractionDigits: 2});
+    }
+    
+    // 最大回撤（简化计算，实际应该从历史数据中计算）
+    const maxDrawdown = Math.abs(Math.min(dashboard.total_return_percent, 0));
+    const maxDrawdownElement = document.getElementById('maxDrawdown');
+    if (maxDrawdownElement) {
+        maxDrawdownElement.textContent = maxDrawdown.toFixed(2) + '%';
+    }
+    
+    // 调试信息 - 验证计算
+    console.log('账户信息更新完成');
+    console.log('资金计算详情:', {
+        currentCapital: dashboard.current_capital,
+        availableCapital: dashboard.available_capital,
+        marginUsed: marginUsed,
+        capitalUtilization: capitalUtilization.toFixed(2) + '%',
+        availableUtilization: ((1 - Math.min(dashboard.available_capital, dashboard.current_capital) / dashboard.current_capital) * 100).toFixed(2) + '%'
+    });
+}
+
+// 获取风险等级文本
+function getRiskLevelText(riskLevel) {
+    const riskMap = {
+        'LOW': '低风险',
+        'MEDIUM': '中风险',
+        'HIGH': '高风险'
+    };
+    return riskMap[riskLevel] || '未知';
+}
+
+// 获取风险等级样式类
+function getRiskLevelClass(riskLevel) {
+    const classMap = {
+        'LOW': 'text-success',
+        'MEDIUM': 'text-warning',
+        'HIGH': 'text-danger'
+    };
+    return classMap[riskLevel] || 'text-muted';
+}
+
+// 显示错误信息
+function showError(message) {
+    if (typeof utils !== 'undefined' && utils.showMessage) {
+        utils.showMessage(message, 'danger');
+    } else {
+        alert(message);
+    }
+}
+
+// 加载Binance账户信息
+function loadBinanceAccount() {
+    console.log('开始加载Binance账户信息...');
+    
+    fetch('/api/binance/account/public')
+        .then(response => {
+            console.log('API响应状态:', response.status, response.statusText);
+            
+            // 检查响应类型
+            const contentType = response.headers.get('content-type');
+            console.log('响应内容类型:', contentType);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            // 检查是否是JSON响应
+            if (!contentType || !contentType.includes('application/json')) {
+                return response.text().then(text => {
+                    console.error('非JSON响应:', text.substring(0, 200));
+                    throw new Error('服务器返回非JSON格式数据，可能是登录页面或错误页面');
+                });
+            }
+            
+            return response.json();
+        })
+        .then(data => {
+            console.log('获取到的Binance账户信息:', data);
+            
+            if (data.success) {
+                updateBinanceAccountDisplay(data);
+            } else {
+                console.error('获取Binance账户信息失败:', data.message);
+                showBinanceAccountError(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('加载Binance账户信息时发生错误:', error);
+            
+            // 根据错误类型提供不同的错误信息
+            let errorMessage = error.message;
+            if (error.message.includes('401') || error.message.includes('403')) {
+                errorMessage = '请先登录系统';
+            } else if (error.message.includes('非JSON格式')) {
+                errorMessage = '会话可能已过期，请刷新页面重新登录';
+            } else if (error.message.includes('fetch')) {
+                errorMessage = '网络连接失败，请检查网络连接';
+            }
+            
+            showBinanceAccountError(errorMessage);
+        });
+}
+
+// 更新Binance账户显示
+function updateBinanceAccountDisplay(data) {
+    const contentDiv = document.getElementById('binanceAccountContent');
+    
+    const balance = data.balance;
+    const position = data.position;
+    const accountInfo = data.account_info;
+    
+    const html = `
+        <div class="row">
+            <!-- 账户余额信息 -->
+            <div class="col-md-6">
+                <h6 class="text-primary mb-3">
+                    <i class="fas fa-wallet me-2"></i>账户余额
+                </h6>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>总钱包余额:</strong></div>
+                    <div class="col-6 text-end">$${balance.total_wallet_balance.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>可用余额:</strong></div>
+                    <div class="col-6 text-end">$${balance.available_balance.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>已用余额:</strong></div>
+                    <div class="col-6 text-end">$${balance.used_balance.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>保证金余额:</strong></div>
+                    <div class="col-6 text-end">$${balance.total_margin_balance.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>未实现盈亏:</strong></div>
+                    <div class="col-6 text-end ${balance.total_unrealized_profit >= 0 ? 'text-success' : 'text-danger'}">
+                        $${balance.total_unrealized_profit.toLocaleString('en-US', {minimumFractionDigits: 2})}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>最大可提现:</strong></div>
+                    <div class="col-6 text-end">$${balance.max_withdraw_amount.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+            </div>
+            
+            <!-- 保证金信息 -->
+            <div class="col-md-6">
+                <h6 class="text-info mb-3">
+                    <i class="fas fa-shield-alt me-2"></i>保证金信息
+                </h6>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>维持保证金:</strong></div>
+                    <div class="col-6 text-end">$${balance.total_maint_margin.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>初始保证金:</strong></div>
+                    <div class="col-6 text-end">$${balance.total_initial_margin.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>仓位保证金:</strong></div>
+                    <div class="col-6 text-end">$${balance.total_position_initial_margin.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>订单保证金:</strong></div>
+                    <div class="col-6 text-end">$${balance.total_open_order_initial_margin.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>全仓余额:</strong></div>
+                    <div class="col-6 text-end">$${balance.total_cross_wallet_balance.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>全仓未实现盈亏:</strong></div>
+                    <div class="col-6 text-end ${balance.total_cross_un_pnl >= 0 ? 'text-success' : 'text-danger'}">
+                        $${balance.total_cross_un_pnl.toLocaleString('en-US', {minimumFractionDigits: 2})}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <div class="row">
+            <!-- 当前持仓信息 -->
+            <div class="col-md-6">
+                <h6 class="text-warning mb-3">
+                    <i class="fas fa-chart-line me-2"></i>当前持仓 (${position.symbol})
+                </h6>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>持仓方向:</strong></div>
+                    <div class="col-6 text-end">
+                        <span class="badge ${position.position_side === 'LONG' ? 'bg-success' : position.position_side === 'SHORT' ? 'bg-danger' : 'bg-secondary'}">
+                            ${position.position_side}
+                        </span>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>持仓数量:</strong></div>
+                    <div class="col-6 text-end">${Math.abs(position.size).toFixed(4)}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>开仓价格:</strong></div>
+                    <div class="col-6 text-end">$${position.entry_price.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>标记价格:</strong></div>
+                    <div class="col-6 text-end">$${position.mark_price.toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>未实现盈亏:</strong></div>
+                    <div class="col-6 text-end ${position.unrealized_pnl >= 0 ? 'text-success' : 'text-danger'}">
+                        $${position.unrealized_pnl.toLocaleString('en-US', {minimumFractionDigits: 2})}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 账户权限信息 -->
+            <div class="col-md-6">
+                <h6 class="text-success mb-3">
+                    <i class="fas fa-cog me-2"></i>账户权限
+                </h6>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>手续费等级:</strong></div>
+                    <div class="col-6 text-end">${accountInfo.fee_tier}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>交易权限:</strong></div>
+                    <div class="col-6 text-end">
+                        <span class="badge ${accountInfo.can_trade ? 'bg-success' : 'bg-danger'}">
+                            ${accountInfo.can_trade ? '允许' : '禁止'}
+                        </span>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>充值权限:</strong></div>
+                    <div class="col-6 text-end">
+                        <span class="badge ${accountInfo.can_deposit ? 'bg-success' : 'bg-danger'}">
+                            ${accountInfo.can_deposit ? '允许' : '禁止'}
+                        </span>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>提现权限:</strong></div>
+                    <div class="col-6 text-end">
+                        <span class="badge ${accountInfo.can_withdraw ? 'bg-success' : 'bg-danger'}">
+                            ${accountInfo.can_withdraw ? '允许' : '禁止'}
+                        </span>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>保证金类型:</strong></div>
+                    <div class="col-6 text-end">
+                        <span class="badge bg-info">${position.margin_type}</span>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-6"><strong>杠杆倍数:</strong></div>
+                    <div class="col-6 text-end">${position.leverage}x</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-3">
+            <div class="col-12">
+                <small class="text-muted">
+                    <i class="fas fa-clock me-1"></i>
+                    最后更新: ${new Date().toLocaleString('zh-CN')}
+                </small>
+            </div>
+        </div>
+    `;
+    
+    contentDiv.innerHTML = html;
+}
+
+// 显示Binance账户错误信息
+function showBinanceAccountError(message) {
+    const contentDiv = document.getElementById('binanceAccountContent');
+    
+    let actionButton = '';
+    if (message.includes('登录') || message.includes('会话')) {
+        actionButton = `
+            <div class="mt-3">
+                <button class="btn btn-primary btn-sm" onclick="window.location.reload()">
+                    <i class="fas fa-refresh me-1"></i>刷新页面
+                </button>
+                <button class="btn btn-outline-secondary btn-sm ms-2" onclick="window.location.href='/login'">
+                    <i class="fas fa-sign-in-alt me-1"></i>重新登录
+                </button>
+            </div>
+        `;
+    } else if (message.includes('网络连接')) {
+        actionButton = `
+            <div class="mt-3">
+                <button class="btn btn-primary btn-sm" onclick="loadBinanceAccount()">
+                    <i class="fas fa-sync-alt me-1"></i>重试
+                </button>
+            </div>
+        `;
+    }
+    
+    contentDiv.innerHTML = `
+        <div class="alert alert-warning" role="alert">
+            <div class="d-flex align-items-start">
+                <i class="fas fa-exclamation-triangle me-2 mt-1"></i>
+                <div class="flex-grow-1">
+                    <strong>无法获取Binance账户信息</strong>
+                    <p class="mb-2">${message}</p>
+                    <small class="text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        可能的原因：
+                        <ul class="mb-0 mt-1">
+                            <li>未登录或会话已过期</li>
+                            <li>未配置Binance API密钥</li>
+                            <li>API密钥权限不足</li>
+                            <li>网络连接问题</li>
+                        </ul>
+                    </small>
+                    ${actionButton}
+                </div>
+            </div>
+        </div>
+    `;
+}
+</script>
+{% endblock %} 

@@ -1,0 +1,140 @@
+<!-- 系统信息组件 -->
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <i class="fas fa-info-circle me-2"></i>{{ title or '系统信息' }}
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <strong>运行时间:</strong>
+                    <span id="uptime">{{ system_info.uptime if system_info else '0:00:00' }}</span>
+                </div>
+                <div class="mb-3">
+                    <strong>系统状态:</strong>
+                    <span class="badge bg-{{ 'success' if status.running else 'danger' }}">
+                        {{ '运行中' if status.running else '已停止' }}
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <strong>运行模式:</strong>
+                    <span class="badge bg-info">{{ status.mode or 'web' }}</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <strong>CPU使用率:</strong>
+                    <div class="progress">
+                        <div class="progress-bar" id="cpu-usage" style="width: 0%">0%</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <strong>内存使用率:</strong>
+                    <div class="progress">
+                        <div class="progress-bar bg-info" id="memory-usage" style="width: 0%">0%</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <strong>磁盘使用率:</strong>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning" id="disk-usage" style="width: 0%">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% if show_details %}
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <small class="text-muted">最后信号:</small><br>
+                <span id="last-signal">{{ status.last_signal.time if status.last_signal else '无' }}</span>
+            </div>
+            <div class="col-md-4">
+                <small class="text-muted">进程ID:</small><br>
+                <span id="process-id">{{ system_info.process_id if system_info else 'N/A' }}</span>
+            </div>
+            <div class="col-md-4">
+                <small class="text-muted">内存占用:</small><br>
+                <span id="memory-used">{{ system_info.memory_mb if system_info else '0' }} MB</span>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function updateSystemInfo() {
+    fetch('/api/performance_monitor')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const info = data.data.system_resources;
+                const processInfo = data.data.process_info;
+                
+                // 更新CPU使用率
+                const cpuBar = document.getElementById('cpu-usage');
+                if (cpuBar) {
+                    cpuBar.style.width = info.cpu_percent + '%';
+                    cpuBar.textContent = info.cpu_percent + '%';
+                }
+                
+                // 更新内存使用率
+                const memoryBar = document.getElementById('memory-usage');
+                if (memoryBar) {
+                    memoryBar.style.width = info.memory_percent + '%';
+                    memoryBar.textContent = info.memory_percent + '%';
+                }
+                
+                // 更新磁盘使用率
+                const diskBar = document.getElementById('disk-usage');
+                if (diskBar) {
+                    diskBar.style.width = info.disk_percent + '%';
+                    diskBar.textContent = info.disk_percent + '%';
+                }
+                
+                // 更新详细信息
+                const processIdElement = document.getElementById('process-id');
+                if (processIdElement) {
+                    processIdElement.textContent = processInfo.pid;
+                }
+                
+                const memoryUsedElement = document.getElementById('memory-used');
+                if (memoryUsedElement) {
+                    memoryUsedElement.textContent = processInfo.memory_mb + ' MB';
+                }
+            }
+        })
+        .catch(error => {
+            console.error('更新系统信息失败:', error);
+        });
+}
+
+function updateUptime() {
+    const uptimeElement = document.getElementById('uptime');
+    if (uptimeElement) {
+        const startTime = new Date('{{ status.start_time }}');
+        const now = new Date();
+        const diff = now - startTime;
+        
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        uptimeElement.textContent = `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+}
+
+// 页面加载时初始化
+document.addEventListener('DOMContentLoaded', function() {
+    // 定期更新系统信息
+    updateSystemInfo();
+    setInterval(updateSystemInfo, 10000); // 每10秒更新一次
+    
+    // 定期更新运行时间
+    updateUptime();
+    setInterval(updateUptime, 1000); // 每秒更新一次
+});
+</script> 

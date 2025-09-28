@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}交易系统{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Socket.IO -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+        .main-content {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .status-running { background-color: #28a745; }
+        .status-stopped { background-color: #dc3545; }
+        .status-warning { background-color: #ffc107; }
+        
+        /* 改进的数据右对齐样式 */
+        .data-value {
+            text-align: right;
+            font-weight: 600;
+            color: #495057;
+            min-width: 80px;
+            display: inline-block;
+        }
+        
+        .data-label {
+            font-weight: 500;
+            color: #6c757d;
+        }
+        
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            padding: 0.25rem 0;
+        }
+        
+        .data-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* 数值类型的特殊样式 */
+        .data-value.currency {
+            color: #28a745;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .data-value.percentage {
+            color: #007bff;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .data-value.negative {
+            color: #dc3545;
+        }
+        
+        /* 信号详情样式 */
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .score-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef !important;
+        }
+        
+        .score-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .score-value {
+            transition: color 0.3s ease;
+        }
+        
+        .indicator-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef !important;
+        }
+        
+        .indicator-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .indicator-value {
+            transition: color 0.3s ease;
+        }
+        
+        .indicator-status {
+            transition: color 0.3s ease;
+        }
+        
+        .filter-item {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .reason-container, .analysis-container {
+            min-height: 100px;
+        }
+        
+        .analysis-item {
+            padding: 1rem;
+            border-left: 4px solid #007bff;
+            background-color: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .analysis-item h6 {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 进度条样式 */
+        .progress {
+            background-color: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            transition: width 0.6s ease;
+        }
+        
+        /* 信号图标动画 */
+        .signal-icon i {
+            transition: all 0.3s ease;
+        }
+        
+        .signal-icon i:hover {
+            transform: scale(1.1);
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .score-card, .indicator-card {
+                margin-bottom: 1rem;
+            }
+            
+            .signal-icon i {
+                font-size: 2rem !important;
+            }
+        }
+        
+        .data-value.positive {
+            color: #28a745;
+        }
+        
+        /* 移动端导航样式 */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #495057;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1050;
+        }
+        
+        .mobile-nav.show {
+            display: block;
+        }
+        
+        .mobile-nav-drawer {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: left 0.3s ease;
+            z-index: 1051;
+            overflow-y: auto;
+        }
+        
+        .mobile-nav.show .mobile-nav-drawer {
+            left: 0;
+        }
+        
+        .mobile-nav-header {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        
+        .mobile-nav-header h4 {
+            color: white;
+            margin: 0;
+        }
+        
+        .mobile-nav-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .mobile-nav-body {
+            padding: 1rem 0;
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            text-decoration: none;
+        }
+        
+        .mobile-nav-footer {
+            padding: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 767.98px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .sidebar {
+                display: none !important;
+            }
+            
+            .main-content {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
+            
+            .top-navbar {
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- 移动端导航 -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-drawer">
+            <div class="mobile-nav-header">
+                <button class="mobile-nav-close" onclick="closeMobileNav()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h4><i class="fas fa-chart-line me-2"></i>交易系统</h4>
+            </div>
+            <div class="mobile-nav-body">
+                <a href="/" class="mobile-nav-link" onclick="closeMobileNav()">
+                    <i class="fas fa-home me-2"></i>主页
+                </a>
+                <a href="/trades" class="mobile-nav-link" onclick="closeMobileNav()">
+                    <i class="fas fa-exchange-alt me-2"></i>交易记录
+                </a>
+                <a href="/account" class="mobile-nav-link" onclick="closeMobileNav()">
+                    <i class="fas fa-wallet me-2"></i>账户信息
+                </a>
+                <a href="/config" class="mobile-nav-link" onclick="closeMobileNav()">
+                    <i class="fas fa-cog me-2"></i>系统配置
+                </a>
+                <a href="/logs" class="mobile-nav-link" onclick="closeMobileNav()">
+                    <i class="fas fa-file-alt me-2"></i>系统日志
+                </a>
+            </div>
+            <div class="mobile-nav-footer">
+                <i class="fas fa-user me-2"></i>
+                {{ session.username if session.username else 'Admin' }}
+                <br>
+                <a href="/logout" class="text-white-50 text-decoration-none">
+                    <i class="fas fa-sign-out-alt me-1"></i>退出登录
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 侧边栏 -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-4">
+                        <h4 class="text-white">
+                            <i class="fas fa-chart-line me-2"></i>
+                            交易系统
+                        </h4>
+                    </div>
+                    
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                <i class="fas fa-home me-2"></i>
+                                主页
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/trades">
+                                <i class="fas fa-exchange-alt me-2"></i>
+                                交易记录
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account">
+                                <i class="fas fa-wallet me-2"></i>
+                                账户信息
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/config">
+                                <i class="fas fa-cog me-2"></i>
+                                系统配置
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logs">
+                                <i class="fas fa-file-alt me-2"></i>
+                                系统日志
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <hr class="text-white-50">
+                    
+                    <div class="text-center text-white-50">
+                        <i class="fas fa-user me-2"></i>
+                        {{ session.username if session.username else 'Admin' }}
+                        <br>
+                        <a href="/logout" class="text-white-50 text-decoration-none">
+                            <i class="fas fa-sign-out-alt me-1"></i>
+                            退出登录
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- 主内容区域 -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <!-- 顶部导航栏 -->
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom top-navbar">
+                    <div class="d-flex align-items-center">
+                        <button class="mobile-nav-toggle me-3" onclick="openMobileNav()">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1 class="h2 mb-0">{% block page_title %}交易系统{% endblock %}</h1>
+                    </div>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <span class="status-indicator status-{{ 'running' if status is defined and status.running else 'stopped' }}"></span>
+                            <span class="text-muted">{{ '系统运行中' if status is defined and status.running else '系统已停止' if status is defined else '系统状态未知' }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 页面内容 -->
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 通用JavaScript -->
+    <script>
+        // Socket.IO 连接
+        const socket = io();
+        
+        // 移动端导航函数
+        function openMobileNav() {
+            document.getElementById('mobileNav').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileNav() {
+            document.getElementById('mobileNav').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        
+        // 点击背景关闭导航
+        document.getElementById('mobileNav').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMobileNav();
+            }
+        });
+        
+        // 通用函数
+        const utils = {
+            formatNumber: function(num, decimals = 2) {
+                return parseFloat(num).toFixed(decimals);
+            },
+            formatPercent: function(num) {
+                return (parseFloat(num) * 100).toFixed(2) + '%';
+            },
+            formatTime: function(timestamp) {
+                return new Date(timestamp).toLocaleString('zh-CN');
+            },
+            showMessage: function(message, type = 'info') {
+                const alertDiv = document.createElement('div');
+                alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+                alertDiv.innerHTML = `
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                
+                const container = document.querySelector('.main-content');
+                container.insertBefore(alertDiv, container.firstChild);
+                
+                setTimeout(() => {
+                    if (alertDiv.parentNode) {
+                        alertDiv.remove();
+                    }
+                }, 5000);
+            }
+        };
+        
+        // Socket.IO 事件处理
+        socket.on('connect', function() {
+            console.log('WebSocket连接成功');
+        });
+        
+        socket.on('error', function(data) {
+            utils.showMessage(data.message, 'danger');
+        });
+        
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 

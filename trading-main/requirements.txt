@@ -1,0 +1,85 @@
+# 量化交易系统核心依赖包
+# 仅包含运行系统必需的最小依赖
+
+# 核心数据处理
+numpy>=1.21.0
+pandas>=1.3.0
+scipy>=1.7.0
+
+# 可视化
+matplotlib>=3.5.0
+plotly>=5.0.0
+
+# 交易所API
+ccxt>=1.60.0
+
+# 系统工具
+psutil>=5.8.0
+requests>=2.25.0
+
+# 通知系统
+python-telegram-bot>=13.0.0
+
+# 配置管理
+python-dotenv>=0.19.0
+
+# 时间处理
+pytz>=2021.1
+
+# 网络和安全
+urllib3>=1.26.0,<2.0.0
+certifi>=2021.5.0
+requests>=2.25.0 
+
+# Web界面依赖
+Flask>=2.0.0
+Flask-SocketIO>=5.0.0
+Werkzeug>=2.0.0
+
+# ============================================================================
+# 依赖说明
+# ============================================================================
+# 
+# 核心依赖（必需）:
+# - numpy: 数值计算，用于技术指标计算和数据处理
+# - pandas: 数据处理，用于K线数据和特征工程
+# - scipy: 科学计算，用于线性回归等统计计算
+# - matplotlib: 图表绘制，用于回测结果可视化
+# - ccxt: 交易所API，用于获取市场数据和执行交易
+# - psutil: 系统监控，用于监控系统资源使用
+# - requests: HTTP请求，用于API调用
+# - python-telegram-bot: Telegram通知，用于交易信号通知
+# - python-dotenv: 环境变量管理，用于API密钥等敏感信息
+# - pytz: 时区处理，用于时间戳转换
+# 
+# Web界面依赖（新增）:
+# - Flask: Web框架，用于构建Web管理界面
+# - Flask-SocketIO: WebSocket支持，用于实时数据推送
+# - Werkzeug: WSGI工具库，Flask的依赖
+# 
+# 开发工具（可选）:
+# - pytest: 单元测试框架
+# - black: 代码格式化工具
+# - flake8: 代码质量检查
+# - memory-profiler: 内存使用分析
+# - urllib3: HTTP客户端库 (限制在v1.x以兼容OpenSSL 1.0.2)
+# - certifi: SSL证书验证
+# - tqdm: 进度条显示
+# 
+# 已移除的依赖（代码中未使用）:
+# - ta-lib: 技术分析库（使用自定义实现）
+# - yfinance: Yahoo Finance数据（使用ccxt替代）
+# - scikit-learn: 机器学习库（当前策略未使用）
+# - xgboost: 梯度提升库（当前策略未使用）
+# - seaborn: 统计图表库（使用matplotlib替代）
+# - plotly: 交互式图表库（用于生成HTML图表）
+# - sqlalchemy: 数据库ORM（当前未使用数据库）
+# - aiohttp: 异步HTTP客户端（使用requests替代）
+# - numba: JIT编译器（当前未使用）
+# - python-binance: Binance专用API（使用ccxt替代）
+# 
+# 安装说明:
+# 1. 基础安装: pip install -r requirements.txt
+# 2. 仅核心依赖: pip install numpy pandas scipy matplotlib ccxt psutil requests python-telegram-bot python-dotenv pytz
+# 3. 开发环境: pip install -r requirements.txt
+# 4. Web界面: pip install Flask Flask-SocketIO Werkzeug

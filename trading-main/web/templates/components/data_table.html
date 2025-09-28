@@ -1,0 +1,115 @@
+<!-- 数据表格组件 -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">
+            <i class="fas fa-table me-2"></i>{{ title or '数据表格' }}
+        </h5>
+        <div>
+            <button type="button" class="btn btn-sm btn-outline-primary" onclick="refreshTable()">
+                <i class="fas fa-sync-alt me-1"></i>刷新
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-success" onclick="exportTable()">
+                <i class="fas fa-download me-1"></i>导出
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover" id="{{ table_id or 'data-table' }}">
+                <thead class="table-dark">
+                    <tr>
+                        {% if headers %}
+                            {% for header in headers %}
+                            <th>{{ header }}</th>
+                            {% endfor %}
+                        {% else %}
+                            <th>列1</th>
+                            <th>列2</th>
+                            <th>列3</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if data %}
+                        {% for row in data %}
+                        <tr>
+                            {% for cell in row %}
+                            <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="{{ headers|length if headers else 3 }}" class="text-center text-muted">
+                                暂无数据
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        
+        {% if pagination %}
+        <nav aria-label="分页导航">
+            <ul class="pagination justify-content-center">
+                <li class="page-item {{ 'disabled' if pagination.current == 1 }}">
+                    <a class="page-link" href="#" onclick="changePage({{ pagination.current - 1 }})">上一页</a>
+                </li>
+                {% for page in range(1, pagination.total + 1) %}
+                <li class="page-item {{ 'active' if page == pagination.current }}">
+                    <a class="page-link" href="#" onclick="changePage({{ page }})">{{ page }}</a>
+                </li>
+                {% endfor %}
+                <li class="page-item {{ 'disabled' if pagination.current == pagination.total }}">
+                    <a class="page-link" href="#" onclick="changePage({{ pagination.current + 1 }})">下一页</a>
+                </li>
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function refreshTable() {
+    // 重新加载表格数据
+    location.reload();
+}
+
+function exportTable() {
+    // 导出表格数据
+    const table = document.getElementById('{{ table_id or "data-table" }}');
+    const csv = tableToCSV(table);
+    downloadCSV(csv, '{{ title or "data" }}.csv');
+}
+
+function tableToCSV(table) {
+    const rows = table.querySelectorAll('tr');
+    const csv = [];
+    
+    for (let row of rows) {
+        const cols = row.querySelectorAll('td, th');
+        const rowData = [];
+        for (let col of cols) {
+            rowData.push('"' + col.textContent.replace(/"/g, '""') + '"');
+        }
+        csv.push(rowData.join(','));
+    }
+    
+    return csv.join('\n');
+}
+
+function downloadCSV(csv, filename) {
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+
+function changePage(page) {
+    // 切换页面
+    const url = new URL(window.location);
+    url.searchParams.set('page', page);
+    window.location.href = url.toString();
+}
+</script> 

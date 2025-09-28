@@ -1,0 +1,216 @@
+<!-- 日志查看器组件 -->
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <i class="fas fa-file-alt me-2"></i>系统日志
+        </h5>
+    </div>
+    <div class="card-body">
+        <!-- 日志文件选择 -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">日志文件</label>
+                <select class="form-select" id="logFileSelect" onchange="onLogFileChange()">
+                    <option value="">加载中...</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">显示行数</label>
+                <select class="form-select" id="logLinesSelect">
+                    <option value="50">50行</option>
+                    <option value="100" selected>100行</option>
+                    <option value="200">200行</option>
+                    <option value="500">500行</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">文件信息</label>
+                <div class="form-control-plaintext" id="fileInfo">
+                    <small class="text-muted">选择日志文件</small>
+                </div>
+            </div>
+        </div>
+    <div class="card-body">
+        <div class="mb-3">
+            <div class="btn-group btn-group-sm" role="group">
+                <input type="radio" class="btn-check" name="logLevel" id="all" value="all" checked>
+                <label class="btn btn-outline-secondary" for="all">全部</label>
+                
+                <input type="radio" class="btn-check" name="logLevel" id="info" value="INFO">
+                <label class="btn btn-outline-info" for="info">信息</label>
+                
+                <input type="radio" class="btn-check" name="logLevel" id="warning" value="WARNING">
+                <label class="btn btn-outline-warning" for="warning">警告</label>
+                
+                <input type="radio" class="btn-check" name="logLevel" id="error" value="ERROR">
+                <label class="btn btn-outline-danger" for="error">错误</label>
+            </div>
+        </div>
+        
+        <div class="log-container" style="height: 400px; overflow-y: auto; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 0.375rem; padding: 1rem; font-family: 'Courier New', monospace; font-size: 0.875rem;">
+            <div id="log-content">
+                <!-- 日志内容将在这里显示 -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentLogFile = '';
+
+// 加载日志文件列表
+function loadLogFiles() {
+    fetch('/api/logs/files')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const select = document.getElementById('logFileSelect');
+                select.innerHTML = '<option value="">选择日志文件...</option>';
+                
+                data.files.forEach(file => {
+                    const option = document.createElement('option');
+                    option.value = file.filename;
+                    option.textContent = `${file.filename} (${formatFileSize(file.size)})`;
+                    select.appendChild(option);
+                });
+                
+                // 自动选择最新的日志文件
+                if (data.files.length > 0) {
+                    select.value = data.files[0].filename;
+                    currentLogFile = data.files[0].filename;
+                    updateFileInfo(data.files[0]);
+                    loadLogContent();
+                }
+            } else {
+                utils.showMessage('获取日志文件列表失败: ' + data.message, 'danger');
+            }
+        })
+        .catch(error => {
+            utils.showMessage('获取日志文件列表异常: ' + error.message, 'danger');
+        });
+}
+
+// 日志文件选择变化
+function onLogFileChange() {
+    const select = document.getElementById('logFileSelect');
+    currentLogFile = select.value;
+    
+    if (currentLogFile) {
+        // 获取文件信息
+        fetch('/api/logs/files')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const file = data.files.find(f => f.filename === currentLogFile);
+                    if (file) {
+                        updateFileInfo(file);
+                    }
+                }
+            });
+        
+        loadLogContent();
+    } else {
+        document.getElementById('fileInfo').innerHTML = '<small class="text-muted">选择日志文件</small>';
+        document.getElementById('log-content').innerHTML = '';
+    }
+}
+
+// 更新文件信息显示
+function updateFileInfo(file) {
+    const fileInfo = document.getElementById('fileInfo');
+    fileInfo.innerHTML = `
+        <small class="text-muted">
+            大小: ${formatFileSize(file.size)} | 
+            修改: ${new Date(file.modified).toLocaleString()}
+        </small>
+    `;
+}
+
+// 格式化文件大小
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+function loadLogContent() {
+    if (!currentLogFile) {
+        utils.showMessage('请先选择日志文件', 'warning');
+        return;
+    }
+    
+    const lines = document.getElementById('logLinesSelect').value;
+    const url = `/api/logs/file/${currentLogFile}?lines=${lines}`;
+    
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                displayLogs(data.logs);
+                updateFileInfo({
+                    size: data.file_size,
+                    modified: new Date().toISOString()
+                });
+            } else {
+                utils.showMessage('获取日志失败: ' + data.message, 'danger');
+            }
+        })
+        .catch(error => {
+            utils.showMessage('获取日志异常: ' + error.message, 'danger');
+        });
+}
+
+function displayLogs(logs) {
+    const logContent = document.getElementById('log-content');
+    const selectedLevel = document.querySelector('input[name="logLevel"]:checked').value;
+    
+    let html = '';
+    logs.forEach(log => {
+        if (selectedLevel === 'all' || log.level === selectedLevel) {
+            const levelClass = getLevelClass(log.level);
+            html += `
+                <div class="log-entry mb-1">
+                    <span class="badge ${levelClass} me-2">${log.level}</span>
+                    <span class="text-muted">${log.timestamp}</span>
+                    <span class="text-primary">[${log.module}]</span>
+                    <span class="log-message">${log.message}</span>
+                </div>
+            `;
+        }
+    });
+    
+    logContent.innerHTML = html;
+    
+    // 滚动到底部
+    const container = logContent.parentElement;
+    container.scrollTop = container.scrollHeight;
+}
+
+function getLevelClass(level) {
+    switch (level) {
+        case 'ERROR': return 'bg-danger';
+        case 'WARNING': return 'bg-warning';
+        case 'INFO': return 'bg-info';
+        case 'DEBUG': return 'bg-secondary';
+        default: return 'bg-secondary';
+    }
+}
+
+
+
+// 监听日志级别选择
+document.addEventListener('change', function(e) {
+    if (e.target.name === 'logLevel') {
+        loadLogContent();
+    }
+});
+
+// 页面加载时获取日志
+document.addEventListener('DOMContentLoaded', function() {
+    loadLogFiles();
+});
+
+
+</script> 

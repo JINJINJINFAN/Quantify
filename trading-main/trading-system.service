@@ -1,0 +1,32 @@
+[Unit]
+Description=Trading System Web Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/trading
+# 直接启动Web应用
+ExecStart=/opt/trading/venv/bin/python /opt/trading/web/app.py --host 101.32.57.114 --port 8082
+Restart=always
+RestartSec=10
+StandardOutput=append:/opt/trading/logs/trading-web.log
+StandardError=append:/opt/trading/logs/trading-web.log
+
+# 环境变量
+Environment=PYTHONPATH=/opt/trading
+Environment=PYTHONUNBUFFERED=1
+Environment=FLASK_ENV=production
+
+# 资源限制
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# 安全设置
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,93 @@
+<!-- 快速操作组件 -->
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <i class="fas fa-bolt me-2"></i>{{ title or '快速操作' }}
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="d-grid gap-2">
+            {% if actions %}
+                {% for action in actions %}
+                <button type="button" class="btn btn-outline-{{ action.color or 'primary' }}" onclick="{{ action.onclick }}">
+                    <i class="fas fa-{{ action.icon }} me-1"></i>{{ action.label }}
+                </button>
+                {% endfor %}
+            {% else %}
+                <!-- 默认快速操作 -->
+                <button type="button" class="btn btn-outline-primary" onclick="checkSignal()">
+                    <i class="fas fa-search me-1"></i>检查信号
+                </button>
+                <button type="button" class="btn btn-outline-success" onclick="viewPositions()">
+                    <i class="fas fa-chart-bar me-1"></i>查看持仓
+                </button>
+                <button type="button" class="btn btn-outline-info" onclick="viewTrades()">
+                    <i class="fas fa-exchange-alt me-1"></i>查看交易
+                </button>
+                <button type="button" class="btn btn-outline-warning" onclick="viewLogs()">
+                    <i class="fas fa-file-alt me-1"></i>查看日志
+                </button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+// 默认快速操作函数
+function checkSignal() {
+    fetch('/api/signal')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                utils.showMessage('信号检查完成', 'success');
+            } else {
+                utils.showMessage('信号检查失败: ' + data.message, 'danger');
+            }
+        })
+        .catch(error => {
+            utils.showMessage('信号检查异常: ' + error.message, 'danger');
+        });
+}
+
+function viewPositions() {
+    window.location.href = '/positions';
+}
+
+function viewTrades() {
+    window.location.href = '/trades';
+}
+
+function viewLogs() {
+    window.location.href = '/logs';
+}
+
+function viewConfig() {
+    window.location.href = '/config';
+}
+
+function viewAccount() {
+    window.location.href = '/account';
+}
+
+function emergencyStop() {
+    if (confirm('确定要紧急停止系统吗？')) {
+        fetch('/api/emergency_stop', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    utils.showMessage('紧急停止成功', 'success');
+                    setTimeout(() => location.reload(), 1000);
+                } else {
+                    utils.showMessage('紧急停止失败: ' + data.message, 'danger');
+                }
+            })
+            .catch(error => {
+                utils.showMessage('紧急停止异常: ' + error.message, 'danger');
+            });
+    }
+}
+
+function forceClosePosition() {
+    utils.showMessage('🚫 系统已设置为强制保持仓位退出，不允许强制平仓', 'warning');
+}
+</script> 

@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-08-30T22:00:00",
+  "description": "用户自定义配置 - 启用真实交易",
+  "config": {
+    "TRADING_CONFIG": {
+      "REAL_TRADING": true,
+      "SYMBOL": "WLFIUSDT",
+      "SIGNAL_CHECK_INTERVAL": 300,
+      "CAPITAL_CONFIG": {
+        "INITIAL_CAPITAL": 20,
+        "POSITION_SIZE_PERCENT": 0.1,
+        "MAX_POSITION_SIZE": 0.55,
+        "MIN_POSITION_SIZE": 0.06,
+        "LEVERAGE": 5
+      }
+    }
+  }
+}

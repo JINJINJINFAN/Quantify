@@ -1,0 +1,513 @@
+{% extends "base.html" %}
+
+{% block title %}系统配置 - 交易系统{% endblock %}
+{% block page_title %}系统配置{% endblock %}
+
+{% block extra_css %}
+<style>
+/* 优化配置页面性能 */
+.config-container {
+    will-change: transform;
+}
+
+.form-range {
+    transition: none; /* 移除过渡动画，提高响应速度 */
+}
+
+.btn:disabled {
+    pointer-events: none;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// 防止重复初始化的标志
+let configLoaded = false;
+
+// 页面加载完成后初始化 - 优化版本
+document.addEventListener('DOMContentLoaded', function() {
+    if (!configLoaded) {
+        // 立即初始化函数，然后异步加载配置
+        initConfigFunctions();
+        
+        // 使用setTimeout延迟加载配置，让页面先渲染完成
+        setTimeout(() => {
+            loadAllConfig().then(() => {
+                configLoaded = true;
+            }).catch(error => {
+                console.error('配置页面初始化失败:', error);
+            });
+        }, 100);
+    }
+});
+
+// 初始化配置函数
+function initConfigFunctions() {
+    // 定义全局函数
+    window.saveAllConfig = function() {
+        
+        // 显示保存中状态
+        const saveBtn = document.querySelector('button[onclick="saveAllConfig()"]');
+        const originalText = saveBtn.innerHTML;
+        saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>保存中...';
+        saveBtn.disabled = true;
+        
+        // 快速收集配置数据
+        const configData = {
+            trading: {
+                symbol: document.getElementById('symbol').value,
+                timeframe: document.getElementById('timeframe').value,
+            },
+            capital_management: {
+                initial_capital: parseFloat(document.getElementById('initial_capital').value),
+                position_size_percent: parseFloat(document.getElementById('position_size_percent').value),
+                leverage: parseInt(document.getElementById('leverage').value)
+            },
+            position_management: {
+                max_position_size: parseFloat(document.getElementById('max_position_size').value),
+                min_position_size: parseFloat(document.getElementById('min_position_size').value)
+            },
+        };
+        
+        // 减少超时时间，加快处理速度
+        const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('请求超时')), 5000)
+        );
+        
+        const savePromise = fetch('/api/config', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(configData)
+        }).then(response => {
+            return response.json();
+        });
+        
+        Promise.race([savePromise, timeoutPromise])
+        .then(data => {
+            
+            // 恢复按钮状态
+            saveBtn.innerHTML = originalText;
+            saveBtn.disabled = false;
+            
+            if (data.success) {
+                // 显示详细的更新信息
+                let message = '配置保存成功';
+                if (data.updated_fields && data.updated_fields.length > 0) {
+                    const updateInfo = data.updated_fields.join(', ');
+                    message += `，已同步更新策略数据: ${updateInfo}`;
+                }
+                
+                if (typeof utils !== 'undefined' && utils.showMessage) {
+                    utils.showMessage(message, 'success');
+                } else {
+                    alert(message);
+                }
+                
+                // 立即更新当前显示
+                updateCurrentPositionDisplay();
+            } else {
+                if (typeof utils !== 'undefined' && utils.showMessage) {
+                    utils.showMessage('配置保存失败: ' + (data.message || '未知错误'), 'danger');
+                } else {
+                    alert('配置保存失败: ' + (data.message || '未知错误'));
+                }
+            }
+        })
+        .catch(error => {
+            console.error('保存配置时发生错误:', error);
+            
+            // 恢复按钮状态
+            saveBtn.innerHTML = originalText;
+            saveBtn.disabled = false;
+            
+            const errorMessage = error.message === '请求超时' ? '保存超时，请重试' : '配置保存异常: ' + error.message;
+            
+            if (typeof utils !== 'undefined' && utils.showMessage) {
+                utils.showMessage(errorMessage, 'danger');
+            } else {
+                alert(errorMessage);
+            }
+        });
+    };
+
+
+    
+}
+
+
+
+// 加载所有配置数据 - 优化版本
+function loadAllConfig() {
+    
+    // 减少超时时间，加快响应
+    const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('加载超时')), 5000)
+    );
+    
+    const loadPromise = fetch('/api/config')
+        .then(response => response.json())
+        .then(data => {
+            // 批量更新DOM，减少重绘次数
+            requestAnimationFrame(() => {
+                // 快速设置交易配置
+                if (data.trading) {
+                    if (data.trading.symbol) {
+                        document.getElementById('symbol').value = data.trading.symbol;
+                    }
+                    if (data.trading.timeframe) {
+                        document.getElementById('timeframe').value = data.trading.timeframe;
+                    }
+                }
+                
+                // 快速设置资金管理配置
+                if (data.capital_management) {
+                    if (data.capital_management.initial_capital) {
+                        document.getElementById('initial_capital').value = data.capital_management.initial_capital;
+                    }
+                    if (data.capital_management.position_size_percent) {
+                        document.getElementById('position_size_percent').value = data.capital_management.position_size_percent;
+                    }
+                    if (data.capital_management.leverage) {
+                        const leverageElement = document.getElementById('leverage');
+                        if (leverageElement) {
+                            leverageElement.value = data.capital_management.leverage;
+                        }
+                    }
+                }
+                
+                // 快速设置仓位管理配置
+                if (data.position_management) {
+                    if (data.position_management.max_position_size) {
+                        document.getElementById('max_position_size').value = data.position_management.max_position_size;
+                    }
+                    if (data.position_management.min_position_size) {
+                        document.getElementById('min_position_size').value = data.position_management.min_position_size;
+                    }
+                }
+                
+                // 设置交易模式配置
+                if (data.trading_mode) {
+                    updateTradingModeDisplay(data.trading_mode);
+                }
+                
+                // 立即更新当前设置显示
+                updateCurrentPositionDisplay();
+            });
+        });
+    
+    return Promise.race([loadPromise, timeoutPromise])
+        .catch(error => {
+            console.error('加载配置数据失败:', error);
+            const errorMessage = error.message === '加载超时' ? '配置加载超时，请刷新页面重试' : '配置加载失败: ' + error.message;
+            
+            if (typeof utils !== 'undefined' && utils.showMessage) {
+                utils.showMessage(errorMessage, 'warning');
+            } else {
+                console.warn(errorMessage);
+            }
+            throw error; // 重新抛出错误以便上层处理
+        });
+}
+
+// 更新当前设置显示
+function updateCurrentPositionDisplay() {
+    const positionSize = document.getElementById('position_size_percent').value;
+    const maxPosition = document.getElementById('max_position_size').value;
+    const minPosition = document.getElementById('min_position_size').value;
+    
+    document.getElementById('current_position_size').textContent = (parseFloat(positionSize) * 100).toFixed(0) + '%';
+    document.getElementById('current_max_position').textContent = (parseFloat(maxPosition) * 100).toFixed(0) + '%';
+    document.getElementById('current_min_position').textContent = (parseFloat(minPosition) * 100).toFixed(0) + '%';
+}
+
+// 更新交易模式显示
+function updateTradingModeDisplay(modeData) {
+    const modeIcon = document.getElementById('trading_mode_icon');
+    const modeText = document.getElementById('trading_mode_text');
+    const modeWarning = document.getElementById('trading_mode_warning');
+    const realModeBtn = document.getElementById('real_mode_btn');
+    const simulationModeBtn = document.getElementById('simulation_mode_btn');
+    
+    if (modeIcon) modeIcon.textContent = modeData.mode_icon || '🟡';
+    if (modeText) modeText.textContent = modeData.trading_mode || '模拟交易';
+    if (modeWarning) modeWarning.textContent = modeData.warning_message || '';
+    
+    // 更新按钮状态
+    if (realModeBtn) {
+        realModeBtn.disabled = !modeData.can_switch_to_real;
+        realModeBtn.classList.toggle('active', modeData.real_trading);
+    }
+    if (simulationModeBtn) {
+        simulationModeBtn.classList.toggle('active', !modeData.real_trading);
+    }
+}
+
+// 切换交易模式
+function switchTradingMode(mode) {
+    const modeText = mode === 'real' ? '真实交易' : '模拟交易';
+    
+    if (mode === 'real') {
+        if (!confirm(`确定要切换到${modeText}模式吗？\n\n真实交易模式将使用真实资金，请谨慎操作！`)) {
+            return;
+        }
+    }
+    
+    fetch('/api/trading_mode', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ mode: mode })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            if (typeof utils !== 'undefined' && utils.showMessage) {
+                utils.showMessage(data.message, 'success');
+            } else {
+                alert(data.message);
+            }
+            // 更新显示
+            updateTradingModeDisplay(data.mode);
+        } else {
+            if (typeof utils !== 'undefined' && utils.showMessage) {
+                utils.showMessage('切换失败: ' + (data.message || '未知错误'), 'danger');
+            } else {
+                alert('切换失败: ' + (data.message || '未知错误'));
+            }
+        }
+    })
+    .catch(error => {
+        console.error('切换交易模式时发生错误:', error);
+        if (typeof utils !== 'undefined' && utils.showMessage) {
+            utils.showMessage('切换异常: ' + error.message, 'danger');
+        } else {
+            alert('切换异常: ' + error.message);
+        }
+    });
+}
+
+// 添加事件监听器来实时更新显示 - 优化版本
+document.addEventListener('DOMContentLoaded', function() {
+    // 使用事件委托，减少事件监听器数量
+    const configContainer = document.querySelector('.card-body');
+    if (configContainer) {
+        configContainer.addEventListener('input', function(event) {
+            const target = event.target;
+            if (target.id === 'position_size_percent' || 
+                target.id === 'max_position_size' || 
+                target.id === 'min_position_size') {
+                // 使用防抖，避免频繁更新
+                clearTimeout(target.updateTimeout);
+                target.updateTimeout = setTimeout(updateCurrentPositionDisplay, 100);
+            }
+        });
+    }
+    
+
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- 配置选项卡 -->
+<div class="row">
+    <div class="col-12">
+        <div class="card config-container">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" id="configTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="trading-tab" data-bs-toggle="tab" data-bs-target="#trading" type="button" role="tab">
+                            <i class="fas fa-chart-line me-1"></i>交易配置
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="capital-tab" data-bs-toggle="tab" data-bs-target="#capital" type="button" role="tab">
+                            <i class="fas fa-dollar-sign me-1"></i>资金管理
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="position-tab" data-bs-toggle="tab" data-bs-target="#position" type="button" role="tab">
+                            <i class="fas fa-chart-pie me-1"></i>仓位管理
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="mode-tab" data-bs-toggle="tab" data-bs-target="#mode" type="button" role="tab">
+                            <i class="fas fa-toggle-on me-1"></i>运行模式
+                        </button>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content" id="configTabContent">
+                    <!-- 交易配置 -->
+                    <div class="tab-pane fade show active" id="trading" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-chart-line me-2"></i>基本交易设置</h6>
+                                <div class="mb-3">
+                                    <label for="symbol" class="form-label">交易对</label>
+                                    <select class="form-select" id="symbol" name="symbol">
+                                        <option value="ETHUSDT">ETHUSDT</option>
+                                        <option value="BTCUSDT">BTCUSDT</option>
+                                        <option value="BNBUSDT">BNBUSDT</option>
+                                        <option value="ADAUSDT">ADAUSDT</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="timeframe" class="form-label">时间级别</label>
+                                    <select class="form-select" id="timeframe" name="timeframe">
+                                        <option value="1m">1分钟</option>
+                                        <option value="5m">5分钟</option>
+                                        <option value="15m">15分钟</option>
+                                        <option value="1h" selected>1小时</option>
+                                        <option value="4h">4小时</option>
+                                        <option value="1d">1天</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-cog me-2"></i>交易限制</h6>
+                                <div class="mb-3">
+                                    <label for="leverage" class="form-label">杠杆倍数</label>
+                                    <select class="form-select" id="leverage" name="leverage">
+                                        <option value="1">1x</option>
+                                        <option value="2">2x</option>
+                                        <option value="3">3x</option>
+                                        <option value="5">5x</option>
+                                        <option value="8" selected>8x</option>
+                                        <option value="10">10x</option>
+                                        <option value="20">20x</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 资金管理 -->
+                    <div class="tab-pane fade" id="capital" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-dollar-sign me-2"></i>资金配置</h6>
+                                <div class="mb-3">
+                                    <label for="initial_capital" class="form-label">初始资金 (USDT)</label>
+                                    <input type="number" class="form-control" id="initial_capital" name="initial_capital" value="10000" min="100" step="100">
+                                    <div class="form-text">设置交易系统的初始资金</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 仓位管理 -->
+                    <div class="tab-pane fade" id="position" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-chart-pie me-2"></i>仓位配置</h6>
+                                <div class="mb-3">
+                                    <label for="position_size_percent" class="form-label">单次仓位比例 (%)</label>
+                                    <input type="range" class="form-range" id="position_size_percent" name="position_size_percent" value="0.1" min="0.01" max="0.5" step="0.01">
+                                    <div class="form-text">每次交易使用的资金比例</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="max_position_size" class="form-label">最大仓位比例 (%)</label>
+                                    <input type="range" class="form-range" id="max_position_size" name="max_position_size" value="1.0" min="0.1" max="2.0" step="0.1">
+                                    <div class="form-text">允许的最大仓位比例</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="min_position_size" class="form-label">最小仓位比例 (%)</label>
+                                    <input type="range" class="form-range" id="min_position_size" name="min_position_size" value="0.2" min="0.01" max="1.0" step="0.01">
+                                    <div class="form-text">允许的最小仓位比例</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-info-circle me-2"></i>当前设置</h6>
+                                <div class="alert alert-info">
+                                    <small>
+                                        <strong>单次仓位比例:</strong> <span id="current_position_size">10%</span><br>
+                                        <strong>最大仓位比例:</strong> <span id="current_max_position">100%</span><br>
+                                        <strong>最小仓位比例:</strong> <span id="current_min_position">20%</span>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 运行模式 -->
+                    <div class="tab-pane fade" id="mode" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-toggle-on me-2"></i>交易模式设置</h6>
+                                <div class="mb-3">
+                                    <label class="form-label">当前运行模式</label>
+                                    <div class="alert alert-warning">
+                                        <span id="trading_mode_icon">🟡</span>
+                                        <strong id="trading_mode_text">模拟交易</strong>
+                                        <br>
+                                        <small id="trading_mode_warning">🟡 模拟交易模式，不会使用真实资金</small>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">切换交易模式</label>
+                                    <div class="d-grid gap-2">
+                                        <button type="button" class="btn btn-outline-danger" id="real_mode_btn" onclick="switchTradingMode('real')">
+                                            <i class="fas fa-exclamation-triangle me-1"></i>切换到真实交易模式
+                                        </button>
+                                        <button type="button" class="btn btn-outline-warning" id="simulation_mode_btn" onclick="switchTradingMode('simulation')">
+                                            <i class="fas fa-shield-alt me-1"></i>切换到模拟交易模式
+                                        </button>
+                                    </div>
+                                    <div class="form-text">
+                                        <i class="fas fa-info-circle me-1"></i>
+                                        真实交易模式将使用真实资金，请谨慎操作！
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-info-circle me-2"></i>模式说明</h6>
+                                <div class="alert alert-info">
+                                    <h6><i class="fas fa-shield-alt me-1"></i>模拟交易模式</h6>
+                                    <ul class="mb-2">
+                                        <li>不会使用真实资金</li>
+                                        <li>适合策略测试和验证</li>
+                                        <li>无资金风险</li>
+                                    </ul>
+                                    <h6><i class="fas fa-exclamation-triangle me-1"></i>真实交易模式</h6>
+                                    <ul class="mb-0">
+                                        <li>使用真实资金进行交易</li>
+                                        <li>需要配置API密钥</li>
+                                        <li>存在资金风险</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            
+            <!-- 配置操作按钮 -->
+            <div class="card-footer py-4">
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-success btn-lg px-5" onclick="saveAllConfig()">
+                        <i class="fas fa-save me-2"></i>保存配置
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<!-- 页面脚本已移动到extra_js块中 -->
+{% endblock %} 

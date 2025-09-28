@@ -1,0 +1,1270 @@
+{% extends "base.html" %}
+
+{% block title %}主页 - 交易系统{% endblock %}
+{% block page_title %}系统概览{% endblock %}
+
+{% block content %}
+<!-- 核心指标卡片 -->
+<div class="row">
+    <!-- 系统状态 -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-primary">
+            <div class="card-body text-center">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-title text-muted mb-1">系统状态</h6>
+                        <h4 class="mb-0" id="systemStatus">
+                            <span class="badge bg-secondary">未知</span>
+                        </h4>
+                        <small class="text-muted">运行时间: <span id="runtimeHours">0.0小时</span></small>
+                    </div>
+                    <div class="text-end">
+                        <i class="fas fa-cogs fa-2x text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <!-- 今日收益 -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-warning">
+            <div class="card-body text-center">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-title text-muted mb-1">今日收益</h6>
+                        <h4 class="mb-0 text-warning" id="dailyPnL">$0.00</h4>
+                        <small class="text-muted">收益率: <span id="dailyReturn">0.00%</span></small>
+                    </div>
+                    <div class="text-end">
+                        <i class="fas fa-chart-line fa-2x text-warning"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 总收益 -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-success">
+            <div class="card-body text-center">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-title text-muted mb-1">总收益</h6>
+                        <h4 class="mb-0 text-success" id="totalPnL">$0.00</h4>
+                        <small class="text-muted">收益率: <span id="totalReturn">0.00%</span></small>
+                    </div>
+                    <div class="text-end">
+                        <i class="fas fa-coins fa-2x text-success"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 账户概览 -->
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-wallet me-2"></i>账户概览
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- 资金信息 -->
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">当前资金</div>
+                            <div id="currentCapital" class="h4 mb-0 text-primary fw-bold">${{ "%.2f"|format(dashboard.current_capital) }}</div>
+                            <small class="text-muted">总资产</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">可用资金</div>
+                            <div id="availableCapital" class="h4 mb-0 text-success fw-bold">${{ "%.2f"|format(dashboard.current_capital) }}</div>
+                            <small class="text-muted">可交易</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">资金利用率</div>
+                            <div id="capitalUtilization" class="h4 mb-0 text-warning fw-bold">0.00%</div>
+                            <small class="text-muted">使用比例</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="text-center p-3 border rounded bg-light">
+                            <div class="text-muted mb-1">交易模式</div>
+                            <div id="tradingModeStatus" class="h4 mb-0 text-info fw-bold">模拟交易</div>
+                            <small class="text-muted">运行状态</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 持仓信息 -->
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card border-0 bg-gradient-light">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2 text-center">
+                                        <div class="position-icon mb-2">
+                                            <i id="positionIcon" class="fas fa-chart-line fa-2x text-muted"></i>
+                                        </div>
+                                        <div id="positionStatus" class="fw-bold">无仓位</div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <div class="text-muted mb-1">持仓数量</div>
+                                        <div id="positionQuantity" class="h5 mb-0">0.0000 ETH</div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <div class="text-muted mb-1">持仓价值</div>
+                                        <div id="positionValue" class="h5 mb-0">$0.00</div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <div class="text-muted mb-1">未实现盈亏</div>
+                                        <div id="positionUnrealizedPnL" class="h5 mb-0">$0.00</div>
+                                        <small id="positionUnrealizedPercent" class="text-muted">(0.00%)</small>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <div class="text-muted mb-1">总交易次数</div>
+                                        <div id="totalTrades" class="h5 mb-0">{{ dashboard.total_trades }}</div>
+                                        <small class="text-muted">今日: <span id="dailyTrades">{{ dashboard.daily_trades }}</span></small>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <div class="text-muted mb-1">胜率</div>
+                                        <div id="winRate" class="h5 mb-0">0.0%</div>
+                                        <small class="text-muted">盈利/亏损: <span id="winningTrades">0</span>/<span id="losingTrades">0</span></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 运行模式和系统控制 -->
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-cogs me-2"></i>运行控制
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- 交易模式 -->
+                    <div class="col-md-6">
+                        <div class="border-end pe-md-4">
+                            <h6 class="text-muted mb-3">
+                                <i class="fas fa-toggle-on me-2"></i>交易模式
+                            </h6>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <div class="h5 mb-1">
+                                        <span id="trading_mode_icon_main">{{ trading_mode.mode_icon if trading_mode else '🟡' }}</span>
+                                        <span id="trading_mode_text_main">{{ trading_mode.trading_mode if trading_mode else '模拟交易' }}</span>
+                                    </div>
+                                    <small class="text-muted" id="trading_mode_warning_main">
+                                        {{ trading_mode.warning_message if trading_mode else '🟡 模拟交易模式，不会使用真实资金' }}
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="btn-group btn-group-sm w-100" role="group">
+                                <button type="button" class="btn btn-outline-danger {{ 'active' if trading_mode and trading_mode.real_trading else '' }}" 
+                                        id="real_mode_btn_main" onclick="switchTradingMode('real')"
+                                        {{ 'disabled' if trading_mode and not trading_mode.can_switch_to_real else '' }}>
+                                    <i class="fas fa-exclamation-triangle me-1"></i>真实交易
+                                </button>
+                                <button type="button" class="btn btn-outline-warning {{ 'active' if trading_mode and not trading_mode.real_trading else '' }}" 
+                                        id="simulation_mode_btn_main" onclick="switchTradingMode('simulation')">
+                                    <i class="fas fa-shield-alt me-1"></i>模拟交易
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 系统控制 -->
+                    <div class="col-md-6">
+                        <div class="ps-md-4">
+                            <h6 class="text-muted mb-3">
+                                <i class="fas fa-power-off me-2"></i>系统控制
+                            </h6>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <div class="h5 mb-1">
+                                        <span id="system_status_text">系统状态</span>
+                                    </div>
+                                    <small class="text-muted" id="system_status_desc">点击下方按钮控制系统运行</small>
+                                </div>
+                            </div>
+                            <div class="btn-group btn-group-sm w-100" role="group">
+                                <button type="button" class="btn btn-success" onclick="startSystem()">
+                                    <i class="fas fa-play me-1"></i>启动系统
+                                </button>
+                                <button type="button" class="btn btn-danger" onclick="stopSystem()">
+                                    <i class="fas fa-stop me-1"></i>停止系统
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 信号详情 -->
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-line me-2"></i>信号详情
+                </h5>
+                <div class="d-flex align-items-center">
+                    <small class="text-muted me-3">最后更新: <span id="signalUpdateTime">-</span></small>
+                    <button class="btn btn-sm btn-outline-primary" onclick="refreshSignalDetails()">
+                        <i class="fas fa-sync-alt"></i> 刷新
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- 信号概览 -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card bg-gradient-primary text-white">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2 text-center">
+                                        <div class="signal-icon mb-2">
+                                            <i id="signalIcon" class="fas fa-question-circle fa-3x"></i>
+                                        </div>
+                                        <h4 id="signalType" class="mb-0">无信号</h4>
+                                        <small id="signalTime">-</small>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <div class="price-info">
+                                            <small class="opacity-75">当前价格</small>
+                                            <h3 id="signalPrice" class="mb-0">$0.00</h3>
+                                            <small id="signalSymbol" class="opacity-75">ETHUSDT</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <div class="score-info">
+                                            <small class="opacity-75">综合评分</small>
+                                            <h3 id="signalScoreMain" class="mb-0 score-number">0.000</h3>
+                                            <small id="signalStrength" class="opacity-75">强度: 弱</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <div class="position-info">
+                                            <small class="opacity-75">建议仓位</small>
+                                            <h3 id="signalPosition" class="mb-0">0.0%</h3>
+                                            <small id="signalDirection" class="opacity-75">方向: 观望</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <div class="trend-info">
+                                            <small class="opacity-75">趋势评分</small>
+                                            <h3 id="trendScoreMain" class="mb-0 score-number">0.000</h3>
+                                            <small id="trendStatus" class="opacity-75">中性</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <div class="risk-info">
+                                            <small class="opacity-75">风险评分</small>
+                                            <h3 id="riskScoreMain" class="mb-0 score-number">0.000</h3>
+                                            <small id="riskStatus" class="opacity-75">低风险</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技术指标和过滤状态 -->
+                <div class="row">
+                    <!-- 技术指标 -->
+                    <div class="col-md-8 mb-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-chart-area me-2"></i>技术指标
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3 col-6 mb-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <div class="indicator-label text-muted mb-1">RSI</div>
+                                            <div id="rsiValue" class="indicator-value fw-bold fs-5">0.0</div>
+                                            <div id="rsiStatus" class="indicator-status small mt-1">正常</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-6 mb-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <div class="indicator-label text-muted mb-1">MACD</div>
+                                            <div id="macdValue" class="indicator-value fw-bold fs-5">0.00</div>
+                                            <div id="macdStatus" class="indicator-status small mt-1">中性</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-6 mb-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <div class="indicator-label text-muted mb-1">ADX</div>
+                                            <div id="adxValue" class="indicator-value fw-bold fs-5">0.0</div>
+                                            <div id="adxStatus" class="indicator-status small mt-1">弱趋势</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-6 mb-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <div class="indicator-label text-muted mb-1">布林带位置</div>
+                                            <div id="bbPosition" class="indicator-value fw-bold fs-5">-</div>
+                                            <div id="bbStatus" class="indicator-status small mt-1">-</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-6 mb-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <div class="indicator-label text-muted mb-1">WMA</div>
+                                            <div id="lineWMA" class="indicator-value fw-bold fs-5">0.00</div>
+                                            <div class="indicator-status small mt-1">移动平均</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-6 mb-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <div class="indicator-label text-muted mb-1">EMA</div>
+                                            <div id="openEMA" class="indicator-value fw-bold fs-5">0.00</div>
+                                            <div class="indicator-status small mt-1">指数平均</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-6 mb-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <div class="indicator-label text-muted mb-1">恐慌指数</div>
+                                            <div id="vixFear" class="indicator-value fw-bold fs-5">20.0</div>
+                                            <div id="vixStatus" class="indicator-status small mt-1">正常</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-6 mb-3">
+                                        <div class="indicator-card text-center p-3 border rounded">
+                                            <div class="indicator-label text-muted mb-1">贪婪指数</div>
+                                            <div id="greedScore" class="indicator-value fw-bold fs-5">50</div>
+                                            <div id="greedStatus" class="indicator-status small mt-1">中性</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 过滤状态 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-filter me-2"></i>过滤状态
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="filterStatus" class="filter-container">
+                                    <div class="text-center text-muted">
+                                        <i class="fas fa-info-circle fa-2x mb-2"></i>
+                                        <p>暂无过滤信息</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 信号原因和AI分析 -->
+                <div class="row">
+                    <!-- 信号原因 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-lightbulb me-2"></i>信号原因
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="signalReason" class="reason-container">
+                                    <p class="text-muted mb-0">暂无信号原因</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI分析 -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-robot me-2"></i>AI分析
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="deepseekAnalysis" class="analysis-container">
+                                    <div class="text-center text-muted">
+                                        <i class="fas fa-robot fa-2x mb-2"></i>
+                                        <p>暂无AI分析数据</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// 页面加载完成后的初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('主页初始化开始...');
+    
+    // 立即加载数据
+    loadDashboardData();
+    
+    // 加载交易模式数据
+    loadTradingMode();
+    
+    // 自动刷新仪表板数据
+    setInterval(loadDashboardData, 15000); // 每15秒更新一次
+    
+
+});
+
+// 加载仪表板数据
+function loadDashboardData() {
+    console.log('开始加载仪表板数据...');
+    
+    fetch('/api/dashboard')
+        .then(response => response.json())
+        .then(data => {
+            console.log('获取到的仪表板数据:', data);
+            
+            if (data.success) {
+                updateDashboardDisplay(data.dashboard);
+                // 同时更新信号显示，避免重复调用API
+                displayCompleteSignalInfo(data.dashboard);
+            } else {
+                console.error('获取仪表板数据失败:', data.message);
+                showError('获取仪表板数据失败: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('加载仪表板数据时发生错误:', error);
+            showError('加载仪表板数据异常: ' + error.message);
+        });
+}
+
+// 更新仪表板显示
+function updateDashboardDisplay(dashboard) {
+    try {
+        // 保存仪表板数据到全局变量，供其他函数使用
+        window.currentDashboardData = dashboard;
+        
+        // 更新系统状态
+        const systemStatus = document.getElementById('systemStatus');
+        if (systemStatus) {
+            if (dashboard.system_running) {
+                systemStatus.innerHTML = '<span class="badge bg-success">运行中</span>';
+            } else {
+                systemStatus.innerHTML = '<span class="badge bg-danger">已停止</span>';
+            }
+        }
+        
+        const runtimeHours = document.getElementById('runtimeHours');
+        if (runtimeHours) {
+            runtimeHours.textContent = dashboard.runtime_hours + '小时';
+        }
+        
+
+        
+        // 更新今日收益
+        const dailyPnL = document.getElementById('dailyPnL');
+        if (dailyPnL) {
+            const dailyPnLValue = dashboard.daily_pnl !== null && dashboard.daily_pnl !== undefined ? parseFloat(dashboard.daily_pnl) : 0;
+            dailyPnL.textContent = '$' + dailyPnLValue.toLocaleString('en-US', {minimumFractionDigits: 2});
+            dailyPnL.className = 'mb-0 ' + getPnLClass(dailyPnLValue);
+        }
+        
+        const dailyReturn = document.getElementById('dailyReturn');
+        if (dailyReturn) {
+            const dailyReturnValue = dashboard.daily_return_percent !== null && dashboard.daily_return_percent !== undefined ? parseFloat(dashboard.daily_return_percent) : 0;
+            dailyReturn.textContent = dailyReturnValue.toFixed(2) + '%';
+        }
+        
+        // 更新总收益
+        const totalPnL = document.getElementById('totalPnL');
+        if (totalPnL) {
+            const totalPnLValue = dashboard.total_pnl !== null && dashboard.total_pnl !== undefined ? parseFloat(dashboard.total_pnl) : 0;
+            totalPnL.textContent = '$' + totalPnLValue.toLocaleString('en-US', {minimumFractionDigits: 2});
+            totalPnL.className = 'mb-0 ' + getPnLClass(totalPnLValue);
+        }
+        
+        const totalReturn = document.getElementById('totalReturn');
+        if (totalReturn) {
+            const totalReturnValue = dashboard.total_return_percent !== null && dashboard.total_return_percent !== undefined ? parseFloat(dashboard.total_return_percent) : 0;
+            totalReturn.textContent = totalReturnValue.toFixed(2) + '%';
+        }
+        
+        // 更新账户信息
+        const currentCapital = document.getElementById('currentCapital');
+        if (currentCapital) {
+            const currentCapitalValue = dashboard.current_capital !== null && dashboard.current_capital !== undefined ? parseFloat(dashboard.current_capital) : 0;
+            currentCapital.textContent = '$' + currentCapitalValue.toLocaleString('en-US', {minimumFractionDigits: 2});
+        }
+        
+        const availableCapital = document.getElementById('availableCapital');
+        if (availableCapital) {
+            const availableCapitalValue = dashboard.available_capital !== null && dashboard.available_capital !== undefined ? parseFloat(dashboard.available_capital) : 0;
+            availableCapital.textContent = '$' + availableCapitalValue.toLocaleString('en-US', {minimumFractionDigits: 2});
+        }
+        
+        const capitalUtilization = document.getElementById('capitalUtilization');
+        if (capitalUtilization) {
+            const capitalUtilizationValue = dashboard.capital_utilization !== null && dashboard.capital_utilization !== undefined ? parseFloat(dashboard.capital_utilization) : 0;
+            capitalUtilization.textContent = capitalUtilizationValue.toFixed(2) + '%';
+        }
+        
+        // 更新持仓信息
+        const positionStatus = document.getElementById('positionStatus');
+        const positionIcon = document.getElementById('positionIcon');
+        if (positionStatus && positionIcon) {
+            if (dashboard.current_position !== 0) {
+                positionStatus.textContent = '有仓位';
+                positionStatus.className = 'fw-bold text-success';
+                positionIcon.className = 'fas fa-chart-line fa-2x text-success';
+            } else {
+                positionStatus.textContent = '无仓位';
+                positionStatus.className = 'fw-bold text-muted';
+                positionIcon.className = 'fas fa-chart-line fa-2x text-muted';
+            }
+        }
+        
+        // 更新详细持仓信息
+        const positionQuantity = document.getElementById('positionQuantity');
+        if (positionQuantity) {
+            const quantity = dashboard.position_quantity || 0;
+            positionQuantity.textContent = quantity.toFixed(4) + ' ETH';
+        }
+        
+        const positionValue = document.getElementById('positionValue');
+        if (positionValue) {
+            const value = dashboard.position_value || 0;
+            positionValue.textContent = '$' + value.toLocaleString('en-US', {minimumFractionDigits: 2});
+        }
+        
+        const positionUnrealizedPnL = document.getElementById('positionUnrealizedPnL');
+        const positionUnrealizedPercent = document.getElementById('positionUnrealizedPercent');
+        if (positionUnrealizedPnL && positionUnrealizedPercent) {
+            const unrealizedPnL = dashboard.position_unrealized_pnl || 0;
+            const unrealizedPnLPercent = dashboard.position_unrealized_pnl_percent || 0;
+            positionUnrealizedPnL.textContent = '$' + unrealizedPnL.toLocaleString('en-US', {minimumFractionDigits: 2});
+            positionUnrealizedPercent.textContent = '(' + unrealizedPnLPercent.toFixed(2) + '%)';
+            
+            // 设置颜色
+            if (unrealizedPnL > 0) {
+                positionUnrealizedPnL.className = 'h5 mb-0 text-success';
+                positionUnrealizedPercent.className = 'text-muted text-success';
+            } else if (unrealizedPnL < 0) {
+                positionUnrealizedPnL.className = 'h5 mb-0 text-danger';
+                positionUnrealizedPercent.className = 'text-muted text-danger';
+            } else {
+                positionUnrealizedPnL.className = 'h5 mb-0 text-muted';
+                positionUnrealizedPercent.className = 'text-muted';
+            }
+        }
+        
+        const tradingModeStatus = document.getElementById('tradingModeStatus');
+        if (tradingModeStatus) {
+            if (dashboard.real_trading) {
+                tradingModeStatus.textContent = '真实交易';
+                tradingModeStatus.className = 'h4 mb-0 text-danger fw-bold';
+            } else {
+                tradingModeStatus.textContent = '模拟交易';
+                tradingModeStatus.className = 'h4 mb-0 text-warning fw-bold';
+            }
+        }
+        
+        // 更新交易统计
+        const totalTrades = document.getElementById('totalTrades');
+        if (totalTrades) {
+            totalTrades.textContent = dashboard.total_trades;
+        }
+        
+        const dailyTrades = document.getElementById('dailyTrades');
+        if (dailyTrades) {
+            dailyTrades.textContent = dashboard.daily_trades;
+        }
+        
+        const winRate = document.getElementById('winRate');
+        if (winRate) {
+            const winRateValue = dashboard.win_rate !== null && dashboard.win_rate !== undefined ? parseFloat(dashboard.win_rate) : 0;
+            winRate.textContent = winRateValue.toFixed(1) + '%';
+        }
+        
+        const winningTrades = document.getElementById('winningTrades');
+        if (winningTrades) {
+            winningTrades.textContent = dashboard.winning_trades;
+        }
+        
+        const losingTrades = document.getElementById('losingTrades');
+        if (losingTrades) {
+            losingTrades.textContent = dashboard.losing_trades;
+        }
+        
+        console.log('仪表板数据更新完成');
+    } catch (error) {
+        console.error('更新仪表板显示失败:', error);
+    }
+}
+
+
+
+// 获取信号样式类
+function getSignalClass(signal) {
+    switch (signal) {
+        case 1: return 'bg-success';  // 做多信号
+        case -1: return 'bg-danger';  // 做空信号
+        default: return 'bg-secondary';   // 无信号
+    }
+}
+
+// 获取信号文本描述
+function getSignalText(signal) {
+    switch (signal) {
+        case 1: return '做多信号';  // 做多信号
+        case -1: return '做空信号';  // 做空信号
+        default: return '无信号';   // 无信号
+    }
+}
+
+// 显示完整信号信息
+function displayCompleteSignalInfo(dashboard) {
+    const completeSignalInfo = dashboard.complete_signal_info || {};
+    
+    // 更新信号概览
+    updateSignalOverview(completeSignalInfo);
+    
+    // 更新技术指标
+    updateTechnicalIndicators(completeSignalInfo);
+    
+    // 更新过滤状态
+    updateFilterStatus(completeSignalInfo);
+    
+    // 更新信号原因
+    updateSignalReason(completeSignalInfo);
+    
+    // 更新AI分析
+    updateDeepSeekAnalysis(completeSignalInfo);
+    
+    // 更新时间戳
+    updateSignalTimestamp();
+}
+
+// 更新信号概览
+function updateSignalOverview(signalInfo) {
+    const signal = signalInfo.signal || 0;
+    const signalText = getSignalText(signal);
+    const signalClass = getSignalClass(signal);
+    
+    // 更新信号图标和类型
+    const signalIcon = document.getElementById('signalIcon');
+    const signalType = document.getElementById('signalType');
+    if (signalIcon && signalType) {
+        if (signal === 1) {
+            signalIcon.className = 'fas fa-arrow-up fa-3x text-success';
+            signalType.textContent = '做多信号';
+        } else if (signal === -1) {
+            signalIcon.className = 'fas fa-arrow-down fa-3x text-danger';
+            signalType.textContent = '做空信号';
+        } else {
+            signalIcon.className = 'fas fa-minus fa-3x text-secondary';
+            signalType.textContent = '观望信号';
+        }
+    }
+    
+    // 更新时间
+    const signalTime = document.getElementById('signalTime');
+    if (signalTime) {
+        const timestamp = signalInfo.timestamp;
+        if (timestamp) {
+            const date = new Date(timestamp);
+            signalTime.textContent = date.toLocaleString('zh-CN');
+        } else {
+            signalTime.textContent = '-';
+        }
+    }
+    
+    // 更新价格信息
+    const signalPrice = document.getElementById('signalPrice');
+    const signalSymbol = document.getElementById('signalSymbol');
+    if (signalPrice) {
+        let price = signalInfo.price || signalInfo.current_price || 0;
+        
+        // 数据验证：确保price是有效数值
+        if (isNaN(price) || price === null || price === undefined) {
+            price = 0;
+            console.warn('价格数据无效，设置为0');
+        }
+        
+        signalPrice.textContent = '$' + price.toFixed(2);
+    }
+    if (signalSymbol) {
+        signalSymbol.textContent = signalInfo.symbol || 'ETHUSDT';
+    }
+    
+    // 更新评分信息
+    const signalScoreMain = document.getElementById('signalScoreMain');
+    const signalStrength = document.getElementById('signalStrength');
+    if (signalScoreMain) {
+        const score = signalInfo.signal_score || 0;
+        signalScoreMain.textContent = score.toFixed(3);
+        signalScoreMain.className = 'mb-0 score-number ' + getScoreClass(score);
+    }
+    if (signalStrength) {
+        const score = Math.abs(signalInfo.signal_score || 0);
+        let strength = '弱';
+        if (score > 0.5) strength = '强';
+        else if (score > 0.2) strength = '中等';
+        signalStrength.textContent = '强度: ' + strength;
+    }
+    
+    // 更新趋势评分
+    const trendScoreMain = document.getElementById('trendScoreMain');
+    const trendStatus = document.getElementById('trendStatus');
+    if (trendScoreMain) {
+        const trendScore = signalInfo.trend_score || 0;
+        trendScoreMain.textContent = trendScore.toFixed(3);
+        trendScoreMain.className = 'mb-0 score-number ' + getScoreClass(trendScore);
+    }
+    if (trendStatus) {
+        const trendScore = signalInfo.trend_score || 0;
+        let status = '中性';
+        if (trendScore > 0.3) status = '看涨';
+        else if (trendScore < -0.3) status = '看跌';
+        trendStatus.textContent = status;
+    }
+    
+    // 更新风险评分
+    const riskScoreMain = document.getElementById('riskScoreMain');
+    const riskStatus = document.getElementById('riskStatus');
+    if (riskScoreMain) {
+        const riskScore = signalInfo.risk_score || 0;
+        riskScoreMain.textContent = riskScore.toFixed(3);
+        riskScoreMain.className = 'mb-0 score-number ' + getScoreClass(riskScore);
+    }
+    if (riskStatus) {
+        const riskScore = Math.abs(signalInfo.risk_score || 0);
+        let status = '低风险';
+        if (riskScore > 0.5) status = '高风险';
+        else if (riskScore > 0.3) status = '中风险';
+        riskStatus.textContent = status;
+    }
+    
+    // 更新仓位信息
+    const signalPosition = document.getElementById('signalPosition');
+    const signalDirection = document.getElementById('signalDirection');
+    if (signalPosition) {
+        let positionSize = signalInfo.position_size || 0;
+        
+        // 处理position_size可能是对象的情况
+        if (typeof positionSize === 'object' && positionSize !== null) {
+            positionSize = positionSize.size || 0;
+        }
+        
+        // 确保positionSize是有效数值
+        if (isNaN(positionSize) || positionSize === null || positionSize === undefined) {
+            positionSize = 0;
+        }
+        
+        // 转换为百分比并显示
+        const percentage = (positionSize * 100).toFixed(1);
+        signalPosition.textContent = percentage + '%';
+    }
+    if (signalDirection) {
+        let direction = '观望';
+        if (signal === 1) direction = '做多';
+        else if (signal === -1) direction = '做空';
+        signalDirection.textContent = '方向: ' + direction;
+    }
+}
+
+
+
+// 更新技术指标
+function updateTechnicalIndicators(signalInfo) {
+    const indicators = signalInfo.indicators || {};
+    
+    // 更新RSI
+    const rsiValue = document.getElementById('rsiValue');
+    const rsiStatus = document.getElementById('rsiStatus');
+    if (rsiValue) {
+        const rsi = indicators.rsi || 0;
+        rsiValue.textContent = rsi.toFixed(1);
+        rsiValue.className = 'indicator-value fw-bold fs-5 ' + getRSIClass(rsi);
+        
+        // 添加数值强调效果
+        if (rsi > 70 || rsi < 30) {
+            rsiValue.style.fontWeight = '900';
+            rsiValue.style.textShadow = '2px 2px 4px rgba(0,0,0,0.3)';
+        } else {
+            rsiValue.style.fontWeight = '700';
+            rsiValue.style.textShadow = '1px 1px 2px rgba(0,0,0,0.1)';
+        }
+    }
+    if (rsiStatus) {
+        const rsi = indicators.rsi || 0;
+        if (rsi > 70) rsiStatus.textContent = '超买';
+        else if (rsi < 30) rsiStatus.textContent = '超卖';
+        else rsiStatus.textContent = '正常';
+        rsiStatus.className = 'indicator-status small mt-1 ' + getRSIClass(rsi);
+    }
+    
+    // 更新MACD
+    const macdValue = document.getElementById('macdValue');
+    const macdStatus = document.getElementById('macdStatus');
+    if (macdValue) {
+        const macd = indicators.macd || 0;
+        macdValue.textContent = macd.toFixed(2);
+        macdValue.className = 'indicator-value fw-bold fs-5 ' + getMACDClass(macd);
+    }
+    if (macdStatus) {
+        const macd = indicators.macd || 0;
+        if (macd > 0) macdStatus.textContent = '看涨';
+        else if (macd < 0) macdStatus.textContent = '看跌';
+        else macdStatus.textContent = '中性';
+        macdStatus.className = 'indicator-status small mt-1 ' + getMACDClass(macd);
+    }
+    
+    // 更新ADX
+    const adxValue = document.getElementById('adxValue');
+    const adxStatus = document.getElementById('adxStatus');
+    if (adxValue) {
+        const adx = indicators.adx || 0;
+        adxValue.textContent = adx.toFixed(1);
+        adxValue.className = 'indicator-value fw-bold fs-5 ' + getADXClass(adx);
+    }
+    if (adxStatus) {
+        const adx = indicators.adx || 0;
+        if (adx > 25) adxStatus.textContent = '强趋势';
+        else if (adx > 20) adxStatus.textContent = '中等趋势';
+        else adxStatus.textContent = '弱趋势';
+        adxStatus.className = 'indicator-status small mt-1 ' + getADXClass(adx);
+    }
+    
+    // 更新布林带位置
+    const bbPosition = document.getElementById('bbPosition');
+    const bbStatus = document.getElementById('bbStatus');
+    if (bbPosition) {
+        const bb_pos = indicators.bb_position || 0.5;
+        bbPosition.textContent = bb_pos.toFixed(2);
+    }
+    if (bbStatus) {
+        const bb_pos = indicators.bb_position || 0.5;
+        if (bb_pos > 0.8) bbStatus.textContent = '上轨';
+        else if (bb_pos < 0.2) bbStatus.textContent = '下轨';
+        else bbStatus.textContent = '中轨';
+    }
+    
+    // 更新其他指标
+    const lineWMA = document.getElementById('lineWMA');
+    if (lineWMA) {
+        const wma = indicators.lineWMA || 0;
+        lineWMA.textContent = wma.toFixed(2);
+    }
+    
+    const openEMA = document.getElementById('openEMA');
+    if (openEMA) {
+        const ema = indicators.openEMA || 0;
+        openEMA.textContent = ema.toFixed(2);
+    }
+    
+    // 更新恐慌指数
+    const vixFear = document.getElementById('vixFear');
+    const vixStatus = document.getElementById('vixStatus');
+    if (vixFear) {
+        const vix = indicators.vix_fear || 20.0;
+        vixFear.textContent = vix.toFixed(1);
+    }
+    if (vixStatus) {
+        const vix = indicators.vix_fear || 20.0;
+        if (vix > 30) vixStatus.textContent = '恐慌';
+        else if (vix < 15) vixStatus.textContent = '贪婪';
+        else vixStatus.textContent = '正常';
+    }
+    
+    // 更新贪婪指数
+    const greedScore = document.getElementById('greedScore');
+    const greedStatus = document.getElementById('greedStatus');
+    if (greedScore) {
+        const greed = indicators.greed_score || 50;
+        greedScore.textContent = greed;
+    }
+    if (greedStatus) {
+        const greed = indicators.greed_score || 50;
+        if (greed > 70) greedStatus.textContent = '贪婪';
+        else if (greed < 30) greedStatus.textContent = '恐慌';
+        else greedStatus.textContent = '中性';
+    }
+}
+
+// 更新过滤状态
+function updateFilterStatus(signalInfo) {
+    const filterStatus = document.getElementById('filterStatus');
+    if (!filterStatus) return;
+    
+    const filterInfo = signalInfo.filter_info || {};
+    
+    if (Object.keys(filterInfo).length === 0) {
+        filterStatus.innerHTML = `
+            <div class="text-center text-muted">
+                <i class="fas fa-info-circle fa-2x mb-2"></i>
+                <p>暂无过滤信息</p>
+            </div>
+        `;
+    } else {
+        let filterHtml = '<div class="filter-list">';
+        for (const [filterName, filterData] of Object.entries(filterInfo)) {
+            const passed = filterData.passed;
+            const reason = filterData.reason || '';
+            const badgeClass = passed ? 'bg-success' : 'bg-danger';
+            const icon = passed ? 'fas fa-check' : 'fas fa-times';
+            const statusText = passed ? '通过' : '失败';
+            
+            filterHtml += `
+                <div class="filter-item d-flex align-items-center mb-2 p-2 border rounded">
+                    <i class="${icon} ${badgeClass} me-2"></i>
+                    <div class="flex-grow-1">
+                        <div class="fw-bold">${filterName}</div>
+                        <small class="text-muted">${reason}</small>
+                    </div>
+                    <span class="badge ${badgeClass}">${statusText}</span>
+                </div>
+            `;
+        }
+        filterHtml += '</div>';
+        filterStatus.innerHTML = filterHtml;
+    }
+}
+
+// 更新信号原因
+function updateSignalReason(signalInfo) {
+    const signalReason = document.getElementById('signalReason');
+    if (!signalReason) return;
+    
+    const reason = signalInfo.reason || '暂无信号原因';
+    
+    if (reason === '暂无信号原因') {
+        signalReason.innerHTML = `
+            <div class="text-center text-muted">
+                <i class="fas fa-lightbulb fa-2x mb-2"></i>
+                <p>暂无信号原因</p>
+            </div>
+        `;
+    } else {
+        signalReason.innerHTML = `
+            <div class="reason-content">
+                <p class="mb-0 text-dark">${reason}</p>
+            </div>
+        `;
+    }
+}
+
+// 更新DeepSeek分析
+function updateDeepSeekAnalysis(signalInfo) {
+    const deepseekAnalysis = document.getElementById('deepseekAnalysis');
+    if (!deepseekAnalysis) return;
+    
+    const analysis = signalInfo.deepseek_analysis || {};
+    
+    if (Object.keys(analysis).length === 0) {
+        deepseekAnalysis.innerHTML = `
+            <div class="text-center text-muted">
+                <i class="fas fa-robot fa-2x mb-2"></i>
+                <p>暂无AI分析数据</p>
+            </div>
+        `;
+    } else {
+        let analysisHtml = '<div class="analysis-content">';
+        
+        // 显示分析结果
+        if (analysis.advice) {
+            analysisHtml += `
+                <div class="analysis-item mb-3">
+                    <h6 class="text-primary">投资建议</h6>
+                    <p class="mb-0">${analysis.advice}</p>
+                </div>
+            `;
+        }
+        
+        if (analysis.trend) {
+            analysisHtml += `
+                <div class="analysis-item mb-3">
+                    <h6 class="text-info">趋势分析</h6>
+                    <p class="mb-0">${analysis.trend}</p>
+                </div>
+            `;
+        }
+        
+        if (analysis.risk) {
+            analysisHtml += `
+                <div class="analysis-item mb-3">
+                    <h6 class="text-warning">风险评估</h6>
+                    <p class="mb-0">${analysis.risk}</p>
+                </div>
+            `;
+        }
+        
+        analysisHtml += '</div>';
+        deepseekAnalysis.innerHTML = analysisHtml;
+    }
+}
+
+// 更新时间戳
+function updateSignalTimestamp() {
+    const signalUpdateTime = document.getElementById('signalUpdateTime');
+    if (signalUpdateTime) {
+        const now = new Date();
+        signalUpdateTime.textContent = now.toLocaleTimeString('zh-CN');
+    }
+}
+
+// 刷新信号详情
+function refreshSignalDetails() {
+    console.log('手动刷新信号详情...');
+    loadDashboardData();
+}
+
+// 获取评分样式类
+function getScoreClass(score) {
+    if (score > 0.5) return 'text-success';
+    if (score > 0.2) return 'text-warning';
+    if (score < -0.5) return 'text-danger';
+    if (score < -0.2) return 'text-warning';
+    return 'text-muted';
+}
+
+
+
+// 获取RSI样式类
+function getRSIClass(rsi) {
+    if (rsi > 70) return 'text-danger';  // 超买
+    if (rsi < 30) return 'text-success'; // 超卖
+    return 'text-muted';
+}
+
+// 获取MACD样式类
+function getMACDClass(macd) {
+    if (macd > 0) return 'text-success';  // 正值
+    if (macd < 0) return 'text-danger';   // 负值
+    return 'text-muted';
+}
+
+// 获取ADX样式类
+function getADXClass(adx) {
+    if (adx > 25) return 'text-success';  // 强趋势
+    if (adx > 20) return 'text-warning';  // 中等趋势
+    return 'text-muted';                  // 弱趋势
+}
+
+// 获取盈亏样式类
+function getPnLClass(pnl) {
+    if (pnl > 0) return 'text-success';
+    if (pnl < 0) return 'text-danger';
+    return 'text-warning';
+}
+
+// 显示错误信息
+function showError(message) {
+    if (typeof utils !== 'undefined' && utils.showMessage) {
+        utils.showMessage(message, 'danger');
+    } else {
+        console.error(message);
+    }
+}
+
+// 更新交易模式显示（主页版本）
+function updateTradingModeDisplayMain(modeData) {
+    const modeIcon = document.getElementById('trading_mode_icon_main');
+    const modeText = document.getElementById('trading_mode_text_main');
+    const modeWarning = document.getElementById('trading_mode_warning_main');
+    const realModeBtn = document.getElementById('real_mode_btn_main');
+    const simulationModeBtn = document.getElementById('simulation_mode_btn_main');
+    
+    if (modeIcon) modeIcon.textContent = modeData.mode_icon || '🟡';
+    if (modeText) modeText.textContent = modeData.trading_mode || '模拟交易';
+    if (modeWarning) modeWarning.textContent = modeData.warning_message || '';
+    
+    // 更新按钮状态
+    if (realModeBtn) {
+        realModeBtn.disabled = !modeData.can_switch_to_real;
+        realModeBtn.classList.toggle('active', modeData.real_trading);
+    }
+    if (simulationModeBtn) {
+        simulationModeBtn.classList.toggle('active', !modeData.real_trading);
+    }
+}
+
+// 加载交易模式
+function loadTradingMode() {
+    fetch('/api/trading_mode')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                updateTradingModeDisplayMain(data.mode);
+            }
+        })
+        .catch(error => {
+            console.error('获取交易模式失败:', error);
+        });
+}
+
+// 切换交易模式
+function switchTradingMode(mode) {
+    const modeText = mode === 'real' ? '真实交易' : '模拟交易';
+    
+    if (confirm(`确定要切换到${modeText}模式吗？`)) {
+        fetch('/api/trading_mode', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ mode: mode })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                utils.showMessage(`已切换到${modeText}模式`, 'success');
+                // 重新加载交易模式数据
+                loadTradingMode();
+                // 刷新页面以更新所有相关数据
+                setTimeout(() => location.reload(), 1000);
+            } else {
+                utils.showMessage(`切换失败: ${data.message}`, 'danger');
+            }
+        })
+        .catch(error => {
+            console.error('切换交易模式失败:', error);
+            utils.showMessage('切换交易模式异常: ' + error.message, 'danger');
+        });
+    }
+}
+
+// 启动系统
+function startSystem() {
+    fetch('/api/start', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                utils.showMessage('系统启动成功', 'success');
+                setTimeout(() => location.reload(), 1000);
+            } else {
+                utils.showMessage('启动失败: ' + data.message, 'danger');
+            }
+        })
+        .catch(error => {
+            utils.showMessage('启动异常: ' + error.message, 'danger');
+        });
+}
+
+// 停止系统
+function stopSystem() {
+    if (confirm('确定要停止系统吗？')) {
+        fetch('/api/stop', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    utils.showMessage('系统停止成功', 'success');
+                    setTimeout(() => location.reload(), 1000);
+                } else {
+                    utils.showMessage('停止失败: ' + data.message, 'danger');
+                }
+            })
+            .catch(error => {
+                utils.showMessage('停止异常: ' + error.message, 'danger');
+            });
+    }
+}
+</script>
+
+<style>
+/* 评分显示增强样式 */
+.score-number {
+    font-weight: 700 !important;
+    font-size: 1.8rem !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    margin-bottom: 8px !important;
+    letter-spacing: 1px;
+}
+
+/* 评分颜色增强 */
+.score-number.text-success {
+    color: #28a745 !important;
+    text-shadow: 1px 1px 3px rgba(40, 167, 69, 0.4);
+}
+
+.score-number.text-warning {
+    color: #ffc107 !important;
+    text-shadow: 1px 1px 3px rgba(255, 193, 7, 0.4);
+}
+
+.score-number.text-danger {
+    color: #dc3545 !important;
+    text-shadow: 1px 1px 3px rgba(220, 53, 69, 0.4);
+}
+
+.score-number.text-muted {
+    color: #6c757d !important;
+    text-shadow: 1px 1px 3px rgba(108, 117, 125, 0.4);
+}
+
+/* 信号详情卡片增强 */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* 技术指标卡片增强 */
+.indicator-card {
+    transition: all 0.3s ease;
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border: 1px solid #dee2e6;
+}
+
+.indicator-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.indicator-value {
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .score-number {
+        font-size: 1.5rem !important;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,110 @@
+<!-- 交易模式状态卡片组件 -->
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h5 class="card-title">
+                    <i class="fas fa-toggle-on me-2"></i>运行模式
+                </h5>
+                <p class="card-text text-muted">当前交易模式状态</p>
+            </div>
+            <div class="text-end">
+                <div class="h4 mb-0">
+                    <span id="trading_mode_icon_main">{{ trading_mode.mode_icon if trading_mode else '🟡' }}</span>
+                    <span id="trading_mode_text_main">{{ trading_mode.trading_mode if trading_mode else '模拟交易' }}</span>
+                </div>
+                <small class="text-muted" id="trading_mode_warning_main">
+                    {{ trading_mode.warning_message if trading_mode else '🟡 模拟交易模式，不会使用真实资金' }}
+                </small>
+            </div>
+        </div>
+        <div class="mt-3">
+            <div class="btn-group btn-group-sm w-100" role="group">
+                <button type="button" class="btn btn-outline-danger {{ 'active' if trading_mode and trading_mode.real_trading else '' }}" 
+                        id="real_mode_btn_main" onclick="switchTradingMode('real')"
+                        {{ 'disabled' if trading_mode and not trading_mode.can_switch_to_real else '' }}>
+                    <i class="fas fa-exclamation-triangle me-1"></i>真实交易
+                </button>
+                <button type="button" class="btn btn-outline-warning {{ 'active' if trading_mode and not trading_mode.real_trading else '' }}" 
+                        id="simulation_mode_btn_main" onclick="switchTradingMode('simulation')">
+                    <i class="fas fa-shield-alt me-1"></i>模拟交易
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// 更新交易模式显示（主页版本）
+function updateTradingModeDisplayMain(modeData) {
+    const modeIcon = document.getElementById('trading_mode_icon_main');
+    const modeText = document.getElementById('trading_mode_text_main');
+    const modeWarning = document.getElementById('trading_mode_warning_main');
+    const realModeBtn = document.getElementById('real_mode_btn_main');
+    const simulationModeBtn = document.getElementById('simulation_mode_btn_main');
+    
+    if (modeIcon) modeIcon.textContent = modeData.mode_icon || '🟡';
+    if (modeText) modeText.textContent = modeData.trading_mode || '模拟交易';
+    if (modeWarning) modeWarning.textContent = modeData.warning_message || '';
+    
+    // 更新按钮状态
+    if (realModeBtn) {
+        realModeBtn.disabled = !modeData.can_switch_to_real;
+        realModeBtn.classList.toggle('active', modeData.real_trading);
+    }
+    if (simulationModeBtn) {
+        simulationModeBtn.classList.toggle('active', !modeData.real_trading);
+    }
+}
+
+// 页面加载时获取交易模式（如果没有服务器端数据）
+document.addEventListener('DOMContentLoaded', function() {
+    {% if not trading_mode %}
+    loadTradingMode();
+    {% endif %}
+});
+
+function loadTradingMode() {
+    fetch('/api/trading_mode')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                updateTradingModeDisplayMain(data.mode);
+            }
+        })
+        .catch(error => {
+            console.error('获取交易模式失败:', error);
+        });
+}
+
+// 切换交易模式
+function switchTradingMode(mode) {
+    const modeText = mode === 'real' ? '真实交易' : '模拟交易';
+    
+    if (confirm(`确定要切换到${modeText}模式吗？`)) {
+        fetch('/api/trading_mode', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ mode: mode })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                utils.showMessage(`已切换到${modeText}模式`, 'success');
+                // 重新加载交易模式数据
+                loadTradingMode();
+                // 刷新页面以更新所有相关数据
+                setTimeout(() => location.reload(), 1000);
+            } else {
+                utils.showMessage(`切换失败: ${data.message}`, 'danger');
+            }
+        })
+        .catch(error => {
+            console.error('切换交易模式失败:', error);
+            utils.showMessage('切换交易模式异常: ' + error.message, 'danger');
+        });
+    }
+}
+</script> 

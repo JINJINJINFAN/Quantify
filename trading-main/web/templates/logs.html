@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}系统日志 - 交易系统{% endblock %}
+{% block page_title %}系统日志{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        {% include 'components/log_viewer.html' %}
+    </div>
+</div>
+{% endblock %}

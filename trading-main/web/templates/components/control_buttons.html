@@ -1,0 +1,47 @@
+<!-- 控制按钮组件 -->
+<div class="btn-group" role="group">
+    <button type="button" class="btn btn-success btn-custom" onclick="startSystem()">
+        <i class="fas fa-play me-1"></i>启动
+    </button>
+    <button type="button" class="btn btn-danger btn-custom" onclick="stopSystem()">
+        <i class="fas fa-stop me-1"></i>停止
+    </button>
+</div>
+
+<script>
+function startSystem() {
+    fetch('/api/start', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                utils.showMessage('系统启动成功', 'success');
+                setTimeout(() => location.reload(), 1000);
+            } else {
+                utils.showMessage('启动失败: ' + data.message, 'danger');
+            }
+        })
+        .catch(error => {
+            utils.showMessage('启动异常: ' + error.message, 'danger');
+        });
+}
+
+function stopSystem() {
+    if (confirm('确定要停止系统吗？')) {
+        fetch('/api/stop', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    utils.showMessage('系统停止成功', 'success');
+                    setTimeout(() => location.reload(), 1000);
+                } else {
+                    utils.showMessage('停止失败: ' + data.message, 'danger');
+                }
+            })
+            .catch(error => {
+                utils.showMessage('停止异常: ' + error.message, 'danger');
+            });
+    }
+}
+
+
+</script> 

@@ -1,0 +1,1042 @@
+2025-08-30 22:16:52,674 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:17:22,778 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:17:22,780 - core.strategy - INFO - 策略状态文件不存在，使用默认状态
+2025-08-30 22:17:22,780 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:17:22,780 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:17:22,780 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:17:22,780 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 10000 USDT
+2025-08-30 22:17:22,780 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:17:22,781 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:17:22,781 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:17:22,781 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:17:22,781 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:18:02,830 - TradingSystem - ERROR - 获取合约账户余额失败: HTTPSConnectionPool(host='fapi.binance.com', port=443): Max retries exceeded with url: /fapi/v2/account?timestamp=1756563462808&recvWindow=10000&signature=77f4d253af91cc15be7c489a708ae08340ee8186074882178cb764e74c417f01 (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000001911EDE9090>, 'Connection to fapi.binance.com timed out. (connect timeout=10)'))
+2025-08-30 22:18:32,873 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:19:02,938 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:19:02,939 - core.strategy - INFO - 策略状态文件不存在，使用默认状态
+2025-08-30 22:19:02,939 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:19:02,939 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:19:02,939 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:19:02,939 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 10000 USDT
+2025-08-30 22:19:02,939 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:19:02,939 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:19:02,939 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:19:02,939 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:19:02,940 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:19:24,293 - TradingSystem - ERROR - 获取合约账户余额失败: HTTP 401: {"code":-2015,"msg":"Invalid API-key, IP, or permissions for action, request ip: 18.183.104.180"}
+2025-08-30 22:19:32,536 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:19:33,459 - TradingSystem - ERROR - 获取仓位失败: HTTP 401: {"code":-2015,"msg":"Invalid API-key, IP, or permissions for action, request ip: 18.183.104.180"}
+2025-08-30 22:19:34,539 - TradingSystem - ERROR - 设置保证金类型失败: API权限不足: 请确保API密钥具有"期货交易"权限并已添加IP白名单 (IP: 18.183.104.180)
+2025-08-30 22:19:35,068 - TradingSystem - ERROR - 获取仓位失败: HTTP 401: {"code":-2015,"msg":"Invalid API-key, IP, or permissions for action, request ip: 18.183.104.180"}
+2025-08-30 22:19:36,659 - TradingSystem - ERROR - 设置杠杆失败: API权限不足: 请确保API密钥具有"期货交易"权限并已添加IP白名单 (IP: 18.183.104.180)
+2025-08-30 22:19:37,016 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:19:37,022 - core.strategy - INFO - 策略状态文件不存在，使用默认状态
+2025-08-30 22:19:37,023 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:19:37,024 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:19:37,025 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:19:37,025 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 10000 USDT
+2025-08-30 22:19:37,026 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:19:37,027 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:19:37,028 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:19:37,028 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:19:37,028 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:19:39,936 - TradingSystem - ERROR - 获取合约账户余额失败: HTTP 401: {"code":-2015,"msg":"Invalid API-key, IP, or permissions for action, request ip: 18.183.104.180"}
+2025-08-30 22:22:11,525 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:22:14,389 - TradingSystem - ERROR - 设置保证金类型失败: 保证金类型设置失败: HTTP 400: {"code":-4168,"msg":"Unable to adjust to isolated-margin mode under the Multi-Assets mode."} (IP: 18.183.104.180)
+2025-08-30 22:22:15,747 - TradingSystem - INFO - 设置杠杆成功: ETHUSDT 8x (原: 5x)
+2025-08-30 22:22:17,488 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:22:17,494 - core.strategy - INFO - 策略状态文件不存在，使用默认状态
+2025-08-30 22:22:17,495 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:22:17,496 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:22:17,497 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:22:17,498 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 10000 USDT
+2025-08-30 22:22:17,500 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:22:17,501 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:22:17,501 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:22:17,501 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:22:17,501 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:22:18,982 - TradingSystem - INFO - 合约账户余额: 总=301.28, 可用=39.40
+2025-08-30 22:23:25,602 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:23:31,316 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:23:31,322 - core.strategy - INFO - 策略状态文件不存在，使用默认状态
+2025-08-30 22:23:31,323 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:23:31,324 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:23:31,325 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:23:31,325 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 200 USDT
+2025-08-30 22:23:31,326 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:23:31,326 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:23:31,327 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:23:31,327 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:23:31,327 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:23:32,339 - TradingSystem - INFO - 合约账户余额: 总=301.28, 可用=39.45
+2025-08-30 22:23:49,438 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:23:52,039 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:23:52,041 - core.strategy - INFO - 策略状态文件不存在，使用默认状态
+2025-08-30 22:23:52,042 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:23:52,042 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:23:52,043 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:23:52,043 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 200 USDT
+2025-08-30 22:23:52,044 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:23:52,044 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:23:52,045 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:23:52,045 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:23:52,045 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:23:52,046 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:23:54,284 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:23:54,292 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:23:54,292 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 22:23:55,091 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:23:55,092 - core.strategy - INFO - 策略状态文件不存在，使用默认状态
+2025-08-30 22:23:55,092 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 22:23:55,092 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 22:23:55
+2025-08-30 22:23:57,946 - TradingSystem - INFO - 第1次信号 - 观望 (评分: 0.000)
+2025-08-30 22:24:00,334 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:27:56,188 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:27:59,536 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:27:59,545 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:27:59,545 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:27:59,546 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:27:59,547 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:27:59,548 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:27:59,548 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 200 USDT
+2025-08-30 22:27:59,549 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:27:59,567 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:27:59,567 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:27:59,567 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:27:59,567 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:27:59,567 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:28:00,990 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:28:00,992 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:28:00,992 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 22:28:02,358 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:28:02,359 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:28:02,359 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:28:02,359 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 22:28:02,359 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 22:28:02
+2025-08-30 22:28:04,407 - TradingSystem - INFO - 第1次信号 - 观望 (评分: 0.000)
+2025-08-30 22:28:05,018 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:30:34,657 - TradingSystem - INFO - 📡 收到信号 2，系统继续运行...
+2025-08-30 22:30:37,786 - TradingSystem - INFO - 📡 收到信号 2，系统继续运行...
+2025-08-30 22:30:39,151 - TradingSystem - INFO - 📡 收到信号 2，系统继续运行...
+2025-08-30 22:30:48,970 - TradingSystem - INFO - 📡 收到信号 2，系统继续运行...
+2025-08-30 22:32:04,091 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:32:05,585 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:32:05,591 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:32:05,591 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:32:05,592 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:32:05,593 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:32:05,594 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:32:05,595 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 200 USDT
+2025-08-30 22:32:05,595 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:32:05,596 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:32:05,597 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:32:05,597 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:32:05,598 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:32:05,598 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:32:06,887 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:32:06,889 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:32:06,889 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 22:32:07,835 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:32:07,835 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:32:07,836 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:32:07,836 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 22:32:07,836 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 22:32:07
+2025-08-30 22:32:10,378 - TradingSystem - INFO - 第1次信号 - 观望 (评分: 0.000)
+2025-08-30 22:32:11,188 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:32:12,377 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:32:13,259 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:32:13,265 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:32:13,266 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:32:13,267 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:32:13,268 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:32:13,269 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:32:13,269 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 200 USDT
+2025-08-30 22:32:13,270 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:32:13,271 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:32:13,272 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:32:13,272 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:32:13,273 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:32:13,273 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:32:14,637 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:32:14,641 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:32:14,641 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 22:32:15,093 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:32:15,094 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:32:15,094 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:32:15,094 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 22:32:15,094 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 22:32:15
+2025-08-30 22:32:18,865 - TradingSystem - INFO - 第1次信号 - 观望 (评分: 0.000)
+2025-08-30 22:32:19,286 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:40:13,711 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:40:16,422 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:40:16,424 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:40:16,424 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:40:16,424 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:40:16,424 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:40:16,425 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:40:16,425 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 20 USDT
+2025-08-30 22:40:16,425 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:40:16,425 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:40:16,425 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:40:16,426 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:40:16,426 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:40:16,426 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:40:17,863 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:40:17,867 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:40:17,867 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 22:40:18,258 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:40:18,259 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:40:18,259 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:40:18,259 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 22:40:18,259 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 22:40:18
+2025-08-30 22:40:20,581 - TradingSystem - INFO - 第1次信号 - 观望 (评分: 0.000)
+2025-08-30 22:40:21,516 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:41:43,137 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:41:45,234 - TradingSystem - ERROR - 设置保证金类型失败: 保证金类型设置失败: HTTP 400: {"code":-1121,"msg":"Invalid symbol."} (IP: 18.183.104.180)
+2025-08-30 22:41:46,931 - TradingSystem - ERROR - 设置杠杆失败: 杠杆设置失败: HTTP 400: {"code":-1121,"msg":"Invalid symbol."} (IP: 18.183.104.180)
+2025-08-30 22:41:47,315 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:41:47,324 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:41:47,324 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:41:47,325 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:41:47,326 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:41:47,326 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:41:47,327 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 20 USDT
+2025-08-30 22:41:47,327 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:41:47,328 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:41:47,328 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:41:47,328 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:41:47,328 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:41:47,328 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:41:48,701 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:41:48,711 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:41:48,711 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 22:41:49,138 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:41:49,139 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:41:49,139 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:41:49,139 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 22:41:49,140 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 22:41:49
+2025-08-30 22:41:52,517 - TradingSystem - WARNING - 第1次检查 - 无法获取信号数据
+2025-08-30 22:41:52,585 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-30 22:42:56,168 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-30 22:43:16,422 - TradingSystem - INFO - 📡 收到信号 2，系统继续运行...
+2025-08-30 22:44:15,058 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:44:18,560 - TradingSystem - ERROR - 设置保证金类型失败: 保证金类型设置失败: HTTP 400: {"code":-4168,"msg":"Unable to adjust to isolated-margin mode under the Multi-Assets mode."} (IP: 18.183.104.180)
+2025-08-30 22:44:19,890 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:44:19,899 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:44:19,899 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:44:19,900 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:44:19,901 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:44:19,902 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:44:19,902 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 20 USDT
+2025-08-30 22:44:19,903 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:44:19,904 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:44:19,904 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:44:19,904 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:44:19,904 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:44:19,905 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:44:21,162 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:44:21,168 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:44:21,169 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 22:44:21,544 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:44:21,547 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:44:21,547 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:44:21,547 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 22:44:21,547 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 22:44:21
+2025-08-30 22:44:26,727 - TradingSystem - INFO - 第1次信号 - 观望 (评分: 0.019)
+2025-08-30 22:44:27,276 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:48:01,932 - TradingSystem - INFO - 📡 收到信号 2，系统继续运行...
+2025-08-30 22:49:08,680 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:49:15,767 - TradingSystem - ERROR - 设置保证金类型失败: 保证金类型设置失败: HTTP 400: {"code":-4168,"msg":"Unable to adjust to isolated-margin mode under the Multi-Assets mode."} (IP: 18.183.104.180)
+2025-08-30 22:49:21,039 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:49:21,046 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:49:21,047 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:49:21,048 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:49:21,049 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:49:21,058 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:49:21,058 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 20 USDT
+2025-08-30 22:49:21,058 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:49:21,059 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:49:21,059 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:49:21,059 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:49:21,059 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:49:21,059 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:49:28,556 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:49:28,559 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:49:28,559 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 22:49:30,569 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:49:30,570 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:49:30,571 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:49:30,571 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 22:49:30,571 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 22:49:30
+2025-08-30 22:49:44,551 - TradingSystem - INFO - 第1次信号 - 观望 (评分: 0.022)
+2025-08-30 22:49:50,718 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:52:45,337 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:52:49,162 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:52:49,167 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:52:49,168 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:52:49,169 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:52:49,170 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:52:49,171 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:52:49,171 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 20 USDT
+2025-08-30 22:52:49,172 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:52:49,182 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:52:49,182 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:52:49,183 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:52:49,183 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:52:49,183 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:52:52,475 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:52:52,479 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:52:52,480 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 22:52:54,372 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:52:54,373 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:52:54,373 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:52:54,374 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 22:52:54,381 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 22:52:54
+2025-08-30 22:53:02,752 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:53:21,108 - TradingSystem - INFO - 第1次信号 - 观望 (评分: 0.022)
+2025-08-30 22:54:35,382 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:54:38,084 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:54:38,089 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:54:38,089 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:54:38,093 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:54:38,094 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:54:38,095 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:54:38,096 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 20 USDT
+2025-08-30 22:54:38,096 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:54:38,098 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:54:38,098 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:54:38,099 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:54:38,099 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:54:38,099 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:54:41,199 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:54:41,203 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:54:41,203 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 22:54:46,238 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:54:46,240 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:54:46,240 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:54:46,241 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 22:54:46,241 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 22:54:46
+2025-08-30 22:55:03,704 - TradingSystem - INFO - 第1次信号 - 观望 (评分: 0.022)
+2025-08-30 22:55:50,134 - utils.telegram_notifier - ERROR - Telegram消息发送异常: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=10)
+2025-08-30 22:55:54,248 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:57:45,970 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 22:57:47,689 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 22:57:47,694 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:57:47,695 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:57:47,696 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 22:57:47,697 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 22:57:47,698 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 22:57:47,699 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 20 USDT
+2025-08-30 22:57:47,700 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 22:57:47,701 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 22:57:47,701 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 22:57:47,702 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 22:57:47,702 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 22:57:47,703 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 22:57:50,168 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:57:50,171 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 22:57:50,171 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 22:57:50,802 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 22:57:50,802 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 22:57:50,803 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 22:57:50,803 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 22:57:50,803 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 22:57:50
+2025-08-30 22:57:58,903 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 22:57:59,306 - TradingSystem - INFO - 第1次信号 - 观望 (评分: -0.017)
+2025-08-30 23:00:08,209 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 23:05:32,394 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 23:05:36,862 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 23:05:36,868 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 23:05:36,869 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 23:05:36,870 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 23:05:36,871 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 23:05:36,872 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 23:05:36,873 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 100 USDT
+2025-08-30 23:05:36,873 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 23:05:36,874 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 23:05:36,875 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 23:05:36,876 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 23:05:36,876 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 23:05:36,877 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 23:05:39,427 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 23:05:39,428 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 23:05:39,428 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 23:05:40,819 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 23:05:40,819 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 23:05:40,820 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 23:05:40,820 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 23:05:40,820 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 23:05:40
+2025-08-30 23:05:48,890 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 23:05:49,335 - TradingSystem - INFO - 第1次信号 - 观望 (评分: 0.000)
+2025-08-30 23:20:39,841 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-30 23:20:42,677 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-30 23:20:42,678 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 23:20:42,678 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 23:20:42,678 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-30 23:20:42,678 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-30 23:20:42,678 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-30 23:20:42,678 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 100 USDT
+2025-08-30 23:20:42,679 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-30 23:20:42,679 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-30 23:20:42,679 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-30 23:20:42,679 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-30 23:20:42,679 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-30 23:20:42,679 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-30 23:20:44,511 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-30 23:20:44,514 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-30 23:20:44,514 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-30 23:20:45,128 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-30 23:20:45,128 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-30 23:20:45,128 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-30 23:20:45,129 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-30 23:20:45,129 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-30 23:20:45
+2025-08-30 23:20:52,634 - TradingSystem - INFO - 第1次信号 - 观望 (评分: 0.000)
+2025-08-30 23:20:56,949 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-08-31 00:20:54,282 - TradingSystem - INFO - 📡 第2次信号检查 - 2025-08-31 00:20:54
+2025-08-31 00:21:10,250 - TradingSystem - INFO - 第2次信号 - 观望 (评分: 0.000)
+2025-08-31 00:52:45,683 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 00:55:26,943 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 00:58:07,343 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 01:00:47,540 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 01:03:28,404 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 01:06:09,246 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 01:08:50,043 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 01:11:29,898 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 01:14:10,528 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 01:16:51,883 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 01:19:32,808 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 01:21:11,932 - TradingSystem - INFO - 📡 第3次信号检查 - 2025-08-31 01:21:11
+2025-08-31 01:22:13,132 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 01:22:53,232 - TradingSystem - WARNING - 第3次检查 - 无法获取信号数据
+2025-08-31 01:24:53,970 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-08-31 01:25:53,567 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-31 01:26:08,633 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-31 01:26:08,639 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-31 01:26:08,640 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-31 01:26:08,641 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-31 01:26:08,642 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-31 01:26:08,642 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-31 01:26:08,643 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 100 USDT
+2025-08-31 01:26:08,644 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-31 01:26:08,644 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-31 01:26:08,645 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-31 01:26:08,645 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-31 01:26:08,646 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-31 01:26:08,646 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-31 01:26:18,653 - utils.telegram_notifier - ERROR - Telegram消息发送异常: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=10)
+2025-08-31 01:26:18,654 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-31 01:26:18,654 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-31 01:26:23,678 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-31 01:26:23,679 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-31 01:26:23,679 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-31 01:26:23,679 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-31 01:26:23,679 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-31 01:26:23
+2025-08-31 01:27:17,845 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-31 01:27:32,903 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-31 01:27:32,904 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-31 01:27:32,904 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-31 01:27:32,904 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-31 01:27:32,904 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-31 01:27:32,904 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-31 01:27:32,904 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 100 USDT
+2025-08-31 01:27:32,905 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-31 01:27:32,905 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-31 01:27:32,905 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-31 01:27:32,905 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-31 01:27:32,905 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-31 01:27:32,905 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-31 01:27:42,927 - utils.telegram_notifier - ERROR - Telegram消息发送异常: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=10)
+2025-08-31 01:27:42,930 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-31 01:27:42,930 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-31 01:27:47,961 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-31 01:27:47,962 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-31 01:27:47,962 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-31 01:27:47,962 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-31 01:27:47,962 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-31 01:27:47
+2025-08-31 01:30:05,530 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-08-31 01:30:20,593 - TradingSystem - INFO - 数据加载器初始化完成
+2025-08-31 01:30:20,597 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-31 01:30:20,597 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-31 01:30:20,598 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-08-31 01:30:20,598 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-08-31 01:30:20,598 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-08-31 01:30:20,599 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 100 USDT
+2025-08-31 01:30:20,599 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-08-31 01:30:20,599 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-08-31 01:30:20,600 - TradingSystem - INFO - 交易状态初始化完成
+2025-08-31 01:30:20,600 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-08-31 01:30:20,600 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-08-31 01:30:20,600 - TradingSystem - INFO - 🚀 启动交易系统
+2025-08-31 01:30:30,607 - utils.telegram_notifier - ERROR - Telegram消息发送异常: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=10)
+2025-08-31 01:30:30,610 - TradingSystem - INFO - 🔄 开始交易循环
+2025-08-31 01:30:30,610 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-08-31 01:30:35,635 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-08-31 01:30:35,635 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-08-31 01:30:35,635 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-08-31 01:30:35,636 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-08-31 01:30:35,636 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-08-31 01:30:35
+2025-09-03 13:49:08,725 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-09-03 13:49:38,854 - TradingSystem - INFO - 数据加载器初始化完成
+2025-09-03 13:49:38,855 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-09-03 13:49:38,855 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 13:49:38,855 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-09-03 13:49:38,855 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-09-03 13:49:38,856 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-09-03 13:49:38,856 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 100 USDT
+2025-09-03 13:49:38,856 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-09-03 13:49:38,856 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-09-03 13:49:38,856 - TradingSystem - INFO - 交易状态初始化完成
+2025-09-03 13:49:38,856 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-09-03 13:49:38,856 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-09-03 13:49:38,856 - TradingSystem - INFO - 🚀 启动交易系统
+2025-09-03 13:49:58,903 - utils.telegram_notifier - ERROR - Telegram消息发送异常: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8374005380:AAGU6CrIHT44Ds0LURGp08iFU88bsYOlAcs/sendMessage (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000013CB62B1590>, 'Connection to api.telegram.org timed out. (connect timeout=10)'))
+2025-09-03 13:49:58,905 - TradingSystem - INFO - 🔄 开始交易循环
+2025-09-03 13:49:58,905 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-09-03 13:50:08,932 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-09-03 13:50:08,933 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-09-03 13:50:08,933 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 13:50:08,933 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-09-03 13:50:08,933 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-09-03 13:50:08
+2025-09-03 13:52:03,628 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-09-03 13:52:18,686 - TradingSystem - INFO - 数据加载器初始化完成
+2025-09-03 13:52:18,689 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-09-03 13:52:18,689 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 13:52:18,690 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-09-03 13:52:18,690 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-09-03 13:52:18,691 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-09-03 13:52:18,691 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 100 USDT
+2025-09-03 13:52:18,691 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-09-03 13:52:18,692 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-09-03 13:52:18,692 - TradingSystem - INFO - 交易状态初始化完成
+2025-09-03 13:52:18,692 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-09-03 13:52:18,693 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-09-03 13:52:18,693 - TradingSystem - INFO - 🚀 启动交易系统
+2025-09-03 13:52:28,708 - utils.telegram_notifier - ERROR - Telegram消息发送异常: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=10)
+2025-09-03 13:52:28,710 - TradingSystem - INFO - 🔄 开始交易循环
+2025-09-03 13:52:28,710 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-09-03 13:52:33,732 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-09-03 13:52:33,733 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-09-03 13:52:33,733 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 13:52:33,733 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-09-03 13:52:33,733 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-09-03 13:52:33
+2025-09-03 13:54:25,827 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-09-03 13:54:40,882 - TradingSystem - INFO - 数据加载器初始化完成
+2025-09-03 13:54:40,883 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-09-03 13:54:40,883 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 13:54:40,883 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-09-03 13:54:40,884 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-09-03 13:54:40,884 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-09-03 13:54:40,884 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 100 USDT
+2025-09-03 13:54:40,884 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-09-03 13:54:40,885 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-09-03 13:54:40,885 - TradingSystem - INFO - 交易状态初始化完成
+2025-09-03 13:54:40,885 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-09-03 13:54:40,885 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-09-03 13:54:40,885 - TradingSystem - INFO - 🚀 启动交易系统
+2025-09-03 13:54:50,908 - utils.telegram_notifier - ERROR - Telegram消息发送异常: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=10)
+2025-09-03 13:54:50,908 - TradingSystem - INFO - 🔄 开始交易循环
+2025-09-03 13:54:50,909 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-09-03 13:54:55,925 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-09-03 13:54:55,925 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-09-03 13:54:55,925 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 13:54:55,925 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-09-03 13:54:55,925 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-09-03 13:54:55
+2025-09-03 13:55:21,349 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-09-03 13:55:36,416 - TradingSystem - INFO - 数据加载器初始化完成
+2025-09-03 13:55:36,419 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-09-03 13:55:36,419 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 13:55:36,420 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-09-03 13:55:36,420 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-09-03 13:55:36,420 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-09-03 13:55:36,420 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 100 USDT
+2025-09-03 13:55:36,420 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-09-03 13:55:36,421 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-09-03 13:55:36,421 - TradingSystem - INFO - 交易状态初始化完成
+2025-09-03 13:55:36,421 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-09-03 13:55:36,421 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-09-03 13:55:36,421 - TradingSystem - INFO - 🚀 启动交易系统
+2025-09-03 13:55:46,448 - utils.telegram_notifier - ERROR - Telegram消息发送异常: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=10)
+2025-09-03 13:55:46,449 - TradingSystem - INFO - 🔄 开始交易循环
+2025-09-03 13:55:46,449 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-09-03 13:55:51,463 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-09-03 13:55:51,464 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-09-03 13:55:51,464 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 13:55:51,464 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-09-03 13:55:51,464 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-09-03 13:55:51
+2025-09-03 13:55:54,626 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-09-03 13:56:09,670 - TradingSystem - INFO - 数据加载器初始化完成
+2025-09-03 13:56:09,673 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-09-03 13:56:09,673 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 13:56:09,673 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:8x, 止损:10.0%
+2025-09-03 13:56:09,673 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-09-03 13:56:09,674 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-09-03 13:56:09,674 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 20 USDT
+2025-09-03 13:56:09,674 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-09-03 13:56:09,674 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-09-03 13:56:09,674 - TradingSystem - INFO - 交易状态初始化完成
+2025-09-03 13:56:09,675 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-09-03 13:56:09,675 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-09-03 13:56:09,675 - TradingSystem - INFO - 🚀 启动交易系统
+2025-09-03 13:56:19,686 - utils.telegram_notifier - ERROR - Telegram消息发送异常: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=10)
+2025-09-03 13:56:19,688 - TradingSystem - INFO - 🔄 开始交易循环
+2025-09-03 13:56:19,688 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-09-03 13:56:24,714 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-09-03 13:56:24,715 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 8x
+2025-09-03 13:56:24,715 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=8x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 13:56:24,715 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-09-03 13:56:24,715 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-09-03 13:56:24
+2025-09-03 13:56:32,794 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-03 13:56:36,361 - TradingSystem - WARNING - 第1次检查 - 无法获取信号数据
+2025-09-03 13:57:27,503 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-03 14:03:29,536 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-09-03 14:03:35,062 - TradingSystem - INFO - 数据加载器初始化完成
+2025-09-03 14:03:35,063 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 5x
+2025-09-03 14:03:35,063 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=5x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 14:03:35,063 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:5x, 止损:10.0%
+2025-09-03 14:03:35,063 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-09-03 14:03:35,063 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-09-03 14:03:35,063 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 20 USDT
+2025-09-03 14:03:35,063 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-09-03 14:03:35,063 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-09-03 14:03:35,064 - TradingSystem - INFO - 交易状态初始化完成
+2025-09-03 14:03:35,064 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-09-03 14:03:35,064 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-09-03 14:03:35,064 - TradingSystem - INFO - 🚀 启动交易系统
+2025-09-03 14:03:36,462 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 14:03:36,463 - TradingSystem - INFO - 🔄 开始交易循环
+2025-09-03 14:03:36,463 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-09-03 14:03:37,513 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-09-03 14:03:37,513 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 5x
+2025-09-03 14:03:37,513 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=5x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 14:03:37,514 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-09-03 14:03:37,514 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-09-03 14:03:37
+2025-09-03 14:03:41,387 - TradingSystem - INFO - 第1次信号 - 观望 (评分: -0.112)
+2025-09-03 14:03:41,868 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 14:05:56,010 - TradingSystem - INFO - 📝 日志系统初始化完成: logs\trading_other.log
+2025-09-03 14:05:59,509 - TradingSystem - INFO - 数据加载器初始化完成
+2025-09-03 14:05:59,510 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 5x
+2025-09-03 14:05:59,510 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=5x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 14:05:59,510 - core.risk - INFO - 风险管理配置验证完成 - 杠杆:5x, 止损:10.0%
+2025-09-03 14:05:59,510 - TradingSystem - INFO - 📈 交易策略初始化完成
+2025-09-03 14:05:59,510 - TradingSystem - INFO - 🔄 每日计数器已重置
+2025-09-03 14:05:59,510 - TradingSystem - INFO - 💰 资金管理初始化完成 - 初始资金: 20 USDT
+2025-09-03 14:05:59,510 - TradingSystem - INFO - 仓位配置 - 单次: 10.0%, 最大: 55.00000000000001%
+2025-09-03 14:05:59,511 - TradingSystem - INFO - ✅ 未找到交易历史文件，将创建新的历史记录
+2025-09-03 14:05:59,511 - TradingSystem - INFO - 交易状态初始化完成
+2025-09-03 14:05:59,511 - TradingSystem - INFO - 🔄 策略持仓状态: 0
+2025-09-03 14:05:59,511 - TradingSystem - INFO - 🚀 交易系统初始化完成 - 模式: service
+2025-09-03 14:05:59,511 - TradingSystem - INFO - 🚀 启动交易系统
+2025-09-03 14:06:01,706 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 14:06:01,707 - TradingSystem - INFO - 🔄 开始交易循环
+2025-09-03 14:06:01,707 - TradingSystem - INFO - 🔧 服务模式运行中 - 开始持续信号监控...
+2025-09-03 14:06:02,561 - deepseek.signal_integrator - INFO -  DeepSeek信号整合器初始化成功
+2025-09-03 14:06:02,562 - core.risk - INFO - 风险管理器杠杆倍数已设置为: 5x
+2025-09-03 14:06:02,562 - core.strategy - INFO - 策略状态已加载: 无仓位 (仓位=0, 杠杆=5x, 持仓价值=$0.00, 保证金=$0.00)
+2025-09-03 14:06:02,562 - TradingSystem - INFO -  信号监控模块初始化完成
+2025-09-03 14:06:02,562 - TradingSystem - INFO - 📡 第1次信号检查 - 2025-09-03 14:06:02
+2025-09-03 14:06:05,565 - TradingSystem - INFO - 第1次信号 - 观望 (评分: -0.112)
+2025-09-03 14:06:06,686 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 15:06:07,507 - TradingSystem - INFO - 📡 第2次信号检查 - 2025-09-03 15:06:07
+2025-09-03 16:14:20,163 - TradingSystem - INFO - 第2次信号 - 观望 (评分: -0.127)
+2025-09-03 16:14:21,162 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 16:19:25,568 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 16:24:29,687 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 16:34:40,249 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 16:39:45,468 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 16:49:53,118 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 17:05:04,482 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 17:14:22,130 - TradingSystem - INFO - 📡 第3次信号检查 - 2025-09-03 17:14:22
+2025-09-03 17:14:26,023 - TradingSystem - INFO - 第3次信号 - 观望 (评分: -0.116)
+2025-09-03 17:30:22,888 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 17:35:27,816 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 17:45:36,236 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 18:00:46,201 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 18:14:28,095 - TradingSystem - INFO - 📡 第4次信号检查 - 2025-09-03 18:14:28
+2025-09-03 18:14:31,457 - TradingSystem - INFO - 第4次信号 - 观望 (评分: -0.092)
+2025-09-03 18:15:59,513 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 18:21:03,253 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 18:31:11,752 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 18:41:21,015 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 19:01:37,316 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 19:14:33,543 - TradingSystem - INFO - 📡 第5次信号检查 - 2025-09-03 19:14:33
+2025-09-03 19:14:36,492 - TradingSystem - INFO - 第5次信号 - 观望 (评分: -0.036)
+2025-09-03 19:21:52,002 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 19:31:58,454 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 19:57:19,468 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 20:02:24,558 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 20:14:38,518 - TradingSystem - INFO - 📡 第6次信号检查 - 2025-09-03 20:14:38
+2025-09-03 20:14:41,098 - TradingSystem - INFO - 第6次信号 - 观望 (评分: -0.029)
+2025-09-03 20:42:55,634 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 20:58:07,570 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 21:03:11,801 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 21:13:20,506 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 21:14:43,283 - TradingSystem - INFO - 📡 第7次信号检查 - 2025-09-03 21:14:43
+2025-09-03 21:14:46,671 - TradingSystem - INFO - 第7次信号 - 观望 (评分: -0.031)
+2025-09-03 21:18:25,822 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 21:23:30,383 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 21:33:42,392 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 21:38:49,012 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 21:43:54,095 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 21:54:01,662 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 21:59:06,953 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 22:04:12,259 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 22:09:16,713 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 22:14:25,674 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 22:14:48,744 - TradingSystem - INFO - 📡 第8次信号检查 - 2025-09-03 22:14:48
+2025-09-03 22:14:52,719 - TradingSystem - INFO - 第8次信号 - 观望 (评分: -0.230)
+2025-09-03 22:19:31,377 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 22:29:40,283 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 22:34:44,890 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 22:44:54,789 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 23:00:05,655 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 23:05:12,738 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 23:10:19,523 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 23:14:54,863 - TradingSystem - INFO - 📡 第9次信号检查 - 2025-09-03 23:14:54
+2025-09-03 23:14:59,221 - TradingSystem - INFO - 第9次信号 - 观望 (评分: -0.267)
+2025-09-03 23:15:25,398 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 23:25:36,334 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 23:25:36,335 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-03 23:25:36,336 - TradingSystem - INFO - 信号: -1, 综合评分: -0.3462, 基础评分: -0.3006, 趋势评分: -0.4146, 信号原因: 空头信号 (评分: -0.35), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.346 (基础:-0.301, 趋势:-0.415)
+• 技术指标: RSI(33.6) 正常, ADX(31.3) 强趋势, MACD(负)
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-03 23:25:36,337 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 230.6270
+2025-09-03 23:25:37,051 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-03 23:25:37,052 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-03 23:25:49,992 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 230.627 WLFIUSDT | 无法获取余额信息: HTTPSConnectionPool(host='fapi.binance.com', port=443): Read timed out. (read timeout=10)
+2025-09-03 23:25:49,993 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 230.627 WLFIUSDT | 无法获取余额信息: HTTPSConnectionPool(host='fapi.binance.com', port=443): Read timed out. (read timeout=10)
+2025-09-03 23:25:52,376 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 23:30:56,523 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 23:36:03,448 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-03 23:51:18,716 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:01:29,369 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:01:29,371 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-04 00:01:29,372 - TradingSystem - INFO - 信号: -1, 综合评分: -0.4362, 基础评分: -0.4329, 趋势评分: -0.4411, 信号原因: 空头信号 (评分: -0.44), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.436 (基础:-0.433, 趋势:-0.441)
+• 技术指标: RSI(30.8) 正常, ADX(35.5) 强趋势, MACD(负)
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-04 00:01:29,374 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 229.2530
+2025-09-04 00:01:32,238 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-04 00:01:32,238 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-04 00:01:42,078 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 229.253 WLFIUSDT | 账户余额: 总=684.87 USDT, 可用=56.49 USDT
+2025-09-04 00:01:42,079 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 229.253 WLFIUSDT | 账户余额: 总=684.87 USDT, 可用=56.49 USDT
+2025-09-04 00:01:43,642 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:06:48,707 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:06:48,709 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-04 00:06:48,711 - TradingSystem - INFO - 信号: -1, 综合评分: -0.4244, 基础评分: -0.4229, 趋势评分: -0.4267, 信号原因: 空头信号 (评分: -0.42), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.424 (基础:-0.423, 趋势:-0.427)
+• 技术指标: RSI(33.8) 正常, ADX(35.5) 强趋势, MACD(负)
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-04 00:06:48,713 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 227.6870
+2025-09-04 00:06:49,424 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-04 00:06:49,424 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-04 00:06:51,682 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 227.687 WLFIUSDT | 账户余额: 总=684.87 USDT, 可用=67.78 USDT
+2025-09-04 00:06:51,683 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 227.687 WLFIUSDT | 账户余额: 总=684.87 USDT, 可用=67.78 USDT
+2025-09-04 00:06:53,052 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:11:57,438 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:11:57,439 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-04 00:11:57,440 - TradingSystem - INFO - 信号: -1, 综合评分: -0.4437, 基础评分: -0.4494, 趋势评分: -0.4353, 信号原因: 空头信号 (评分: -0.44), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.444 (基础:-0.449, 趋势:-0.435)
+• 技术指标: RSI(29.8) 超卖, ADX(35.5) 强趋势, MACD(负)
+注意: RSI处于超卖区域，建议谨慎操作
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-04 00:11:57,442 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 230.3090
+2025-09-04 00:11:58,237 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-04 00:11:58,237 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-04 00:12:00,660 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 230.309 WLFIUSDT | 账户余额: 总=684.86 USDT, 可用=52.90 USDT
+2025-09-04 00:12:00,660 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 230.309 WLFIUSDT | 账户余额: 总=684.86 USDT, 可用=52.90 USDT
+2025-09-04 00:12:02,558 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:15:01,279 - TradingSystem - INFO - 📡 第10次信号检查 - 2025-09-04 00:15:01
+2025-09-04 00:15:04,429 - TradingSystem - INFO - 第10次信号 - 做空 (评分: -0.433)
+2025-09-04 00:17:07,278 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:17:07,279 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-04 00:17:07,279 - TradingSystem - INFO - 信号: -1, 综合评分: -0.4274, 基础评分: -0.4258, 趋势评分: -0.4299, 信号原因: 空头信号 (评分: -0.43), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.427 (基础:-0.426, 趋势:-0.430)
+• 技术指标: RSI(32.4) 正常, ADX(35.5) 强趋势, MACD(负)
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-04 00:17:07,280 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 228.3110
+2025-09-04 00:17:08,334 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-04 00:17:08,335 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-04 00:17:12,480 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 228.311 WLFIUSDT | 账户余额: 总=684.83 USDT, 可用=64.76 USDT
+2025-09-04 00:17:12,481 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 228.311 WLFIUSDT | 账户余额: 总=684.83 USDT, 可用=64.76 USDT
+2025-09-04 00:17:14,425 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:22:19,081 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:22:19,081 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-04 00:22:19,082 - TradingSystem - INFO - 信号: -1, 综合评分: -0.3385, 基础评分: -0.3287, 趋势评分: -0.3532, 信号原因: 空头信号 (评分: -0.34), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.339 (基础:-0.329, 趋势:-0.353)
+• 技术指标: RSI(36.1) 正常, ADX(35.5) 强趋势, MACD(负)
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-04 00:22:19,083 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 226.5520
+2025-09-04 00:22:19,729 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-04 00:22:19,729 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-04 00:22:21,888 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 226.552 WLFIUSDT | 账户余额: 总=684.82 USDT, 可用=74.12 USDT
+2025-09-04 00:22:21,888 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 226.552 WLFIUSDT | 账户余额: 总=684.82 USDT, 可用=74.12 USDT
+2025-09-04 00:22:23,150 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:27:30,967 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:27:30,968 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-04 00:27:30,970 - TradingSystem - INFO - 信号: -1, 综合评分: -0.4311, 基础评分: -0.4283, 趋势评分: -0.4352, 信号原因: 空头信号 (评分: -0.43), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.431 (基础:-0.428, 趋势:-0.435)
+• 技术指标: RSI(31.0) 正常, ADX(35.5) 强趋势, MACD(负)
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-04 00:27:30,972 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 229.1480
+2025-09-04 00:27:31,696 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-04 00:27:31,696 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-04 00:27:34,033 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 229.148 WLFIUSDT | 账户余额: 总=684.90 USDT, 可用=58.08 USDT
+2025-09-04 00:27:34,034 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 229.148 WLFIUSDT | 账户余额: 总=684.90 USDT, 可用=58.08 USDT
+2025-09-04 00:27:35,527 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:32:40,468 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:32:40,468 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-04 00:32:40,469 - TradingSystem - INFO - 信号: -1, 综合评分: -0.4275, 基础评分: -0.4251, 趋势评分: -0.4310, 信号原因: 空头信号 (评分: -0.43), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.427 (基础:-0.425, 趋势:-0.431)
+• 技术指标: RSI(32.0) 正常, ADX(35.5) 强趋势, MACD(负)
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-04 00:32:40,469 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 228.5190
+2025-09-04 00:32:41,145 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-04 00:32:41,145 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-04 00:32:43,614 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 228.519 WLFIUSDT | 账户余额: 总=684.86 USDT, 可用=63.74 USDT
+2025-09-04 00:32:43,615 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 228.519 WLFIUSDT | 账户余额: 总=684.86 USDT, 可用=63.74 USDT
+2025-09-04 00:32:44,933 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:37:49,344 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:37:49,346 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-04 00:37:49,347 - TradingSystem - INFO - 信号: -1, 综合评分: -0.4293, 基础评分: -0.4267, 趋势评分: -0.4332, 信号原因: 空头信号 (评分: -0.43), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.429 (基础:-0.427, 趋势:-0.433)
+• 技术指标: RSI(31.3) 正常, ADX(35.5) 强趋势, MACD(负)
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-04 00:37:49,348 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 228.8330
+2025-09-04 00:37:52,204 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-04 00:37:52,205 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-04 00:37:54,167 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 228.833 WLFIUSDT | 账户余额: 总=684.88 USDT, 可用=59.95 USDT
+2025-09-04 00:37:54,168 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 228.833 WLFIUSDT | 账户余额: 总=684.88 USDT, 可用=59.95 USDT
+2025-09-04 00:37:55,509 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:43:00,241 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:43:00,242 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-04 00:43:00,244 - TradingSystem - INFO - 信号: -1, 综合评分: -0.4078, 基础评分: -0.4037, 趋势评分: -0.4139, 信号原因: 空头信号 (评分: -0.41), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.408 (基础:-0.404, 趋势:-0.414)
+• 技术指标: RSI(30.8) 正常, ADX(35.5) 强趋势, MACD(负)
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-04 00:43:00,245 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 229.2530
+2025-09-04 00:43:01,157 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-04 00:43:01,158 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-04 00:43:04,557 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 229.253 WLFIUSDT | 账户余额: 总=684.87 USDT, 可用=58.02 USDT
+2025-09-04 00:43:04,558 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 229.253 WLFIUSDT | 账户余额: 总=684.87 USDT, 可用=58.02 USDT
+2025-09-04 00:43:06,108 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:48:10,994 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:48:10,995 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-04 00:48:10,995 - TradingSystem - INFO - 信号: -1, 综合评分: -0.4055, 基础评分: -0.4017, 趋势评分: -0.4113, 信号原因: 空头信号 (评分: -0.41), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.406 (基础:-0.402, 趋势:-0.411)
+• 技术指标: RSI(31.3) 正常, ADX(35.5) 强趋势, MACD(负)
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-04 00:48:10,996 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 228.8330
+2025-09-04 00:48:12,099 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-04 00:48:12,100 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-04 00:48:14,502 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 228.833 WLFIUSDT | 账户余额: 总=684.86 USDT, 可用=59.18 USDT
+2025-09-04 00:48:14,503 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 228.833 WLFIUSDT | 账户余额: 总=684.86 USDT, 可用=59.18 USDT
+2025-09-04 00:48:15,830 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:53:21,831 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 00:53:21,832 - TradingSystem - INFO - 信号: 空头 | 价格: 0.22 | 状态: 无持仓
+2025-09-04 00:53:21,833 - TradingSystem - INFO - 信号: -1, 综合评分: -0.4866, 基础评分: -0.5186, 趋势评分: -0.4386, 信号原因: 空头信号 (评分: -0.49), 投资建议: 📉 轻微做空建议
+• 综合评分: -0.487 (基础:-0.519, 趋势:-0.439)
+• 技术指标: RSI(29.4) 超卖, ADX(35.7) 强趋势, MACD(负)
+注意: RSI处于超卖区域，建议谨慎操作
+💡 操作建议: 信号强度较弱，建议小仓位或等待
+
+2025-09-04 00:53:21,833 - TradingSystem - INFO - 🔧 杠杆计算 - 策略仓位: 10.00 USDT, 杠杆: 5x, 实际持仓价值: 50.00 USDT, ETH数量: 230.8400
+2025-09-04 00:53:22,552 - TradingSystem - INFO - 💡 当前有开仓 (8088.0)，跳过保证金类型设置
+2025-09-04 00:53:22,552 - TradingSystem - INFO - 💡 当前有开仓，跳过杠杆设置，使用当前杠杆: 5x
+2025-09-04 00:53:24,698 - TradingSystem - ERROR - 下单失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 230.84 WLFIUSDT | 账户余额: 总=684.82 USDT, 可用=47.02 USDT
+2025-09-04 00:53:24,699 - TradingSystem - ERROR - 开short仓失败: 下单失败: HTTP 400: {"code":-1111,"msg":"Precision is over the maximum defined for this asset."} (IP: 16.162.255.236) - 下单金额: 230.84 WLFIUSDT | 账户余额: 总=684.82 USDT, 可用=47.02 USDT
+2025-09-04 00:53:26,647 - utils.telegram_notifier - INFO -  Telegram消息发送成功
+2025-09-04 01:00:07,216 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:02:48,085 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:05:29,549 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:08:11,233 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:10:51,927 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:13:32,702 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:15:06,556 - TradingSystem - INFO - 📡 第11次信号检查 - 2025-09-04 01:15:06
+2025-09-04 01:16:13,292 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:16:48,026 - TradingSystem - WARNING - 第11次检查 - 无法获取信号数据
+2025-09-04 01:18:53,881 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:21:34,690 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:24:15,724 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:26:56,290 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:29:37,237 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:32:17,939 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:34:58,967 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:37:38,808 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:40:20,041 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:43:00,443 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:45:41,444 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:48:22,812 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:51:03,285 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:53:44,204 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:56:25,237 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 01:59:06,494 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:01:47,180 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:04:27,909 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:07:08,843 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:09:49,991 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:12:30,959 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:15:12,125 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:16:50,123 - TradingSystem - INFO - 📡 第12次信号检查 - 2025-09-04 02:16:50
+2025-09-04 02:17:52,523 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:18:30,703 - TradingSystem - WARNING - 第12次检查 - 无法获取信号数据
+2025-09-04 02:20:33,214 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:23:14,534 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:25:54,998 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:28:36,332 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:31:16,658 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:33:57,314 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:36:37,773 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:39:18,282 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:41:58,820 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:44:39,976 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:47:20,251 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:50:00,959 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:52:41,608 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:55:22,661 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 02:58:03,641 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:00:44,189 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:03:24,599 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:06:05,110 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:08:46,173 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:11:26,975 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:14:08,394 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:16:49,463 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:18:32,878 - TradingSystem - INFO - 📡 第13次信号检查 - 2025-09-04 03:18:32
+2025-09-04 03:19:30,280 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:20:14,061 - TradingSystem - WARNING - 第13次检查 - 无法获取信号数据
+2025-09-04 03:22:11,475 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:24:52,655 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:27:34,197 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:30:14,715 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:32:55,905 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:35:36,686 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:38:18,200 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:40:59,401 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:43:40,478 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:46:22,004 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:49:02,809 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:51:43,803 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:54:25,398 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:57:05,903 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 03:59:46,991 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:02:27,704 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:05:08,882 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:07:49,425 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:10:30,415 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:13:11,129 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:15:52,339 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:18:33,359 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:20:16,160 - TradingSystem - INFO - 📡 第14次信号检查 - 2025-09-04 04:20:16
+2025-09-04 04:21:14,043 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:21:57,096 - TradingSystem - WARNING - 第14次检查 - 无法获取信号数据
+2025-09-04 04:23:54,805 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:26:35,669 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:29:16,422 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:31:56,702 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:34:37,839 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:37:18,598 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:39:59,276 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:42:39,995 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:45:21,118 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:48:02,838 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:50:43,913 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:53:24,744 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:56:05,538 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 04:58:46,418 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:01:27,385 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:04:08,046 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:06:49,422 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:09:30,358 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:12:11,571 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:14:52,867 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:17:33,435 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:20:15,047 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:21:59,234 - TradingSystem - INFO - 📡 第15次信号检查 - 2025-09-04 05:21:59
+2025-09-04 05:22:55,701 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:23:40,449 - TradingSystem - WARNING - 第15次检查 - 无法获取信号数据
+2025-09-04 05:25:36,629 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:28:17,795 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:30:59,319 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:33:40,028 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:36:21,082 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:39:01,465 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:41:41,560 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:44:22,403 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:47:03,173 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:49:43,448 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:52:24,186 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:55:05,414 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 05:57:46,664 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:00:27,322 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:03:08,562 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:05:49,131 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:08:29,805 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:11:11,087 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:13:51,892 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:16:32,957 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:19:14,155 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:21:55,019 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:23:42,538 - TradingSystem - INFO - 📡 第16次信号检查 - 2025-09-04 06:23:42
+2025-09-04 06:24:36,387 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:25:23,896 - TradingSystem - WARNING - 第16次检查 - 无法获取信号数据
+2025-09-04 06:27:17,604 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:29:58,008 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:32:38,063 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:35:19,608 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:38:00,627 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:40:41,605 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:43:22,711 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:46:03,496 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:48:44,313 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:51:24,870 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:54:05,605 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:56:46,350 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 06:59:26,672 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:02:07,561 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:04:48,610 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:07:28,729 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:10:09,216 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:12:50,020 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:15:30,769 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:18:11,403 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:20:52,480 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:23:33,107 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:25:26,118 - TradingSystem - INFO - 📡 第17次信号检查 - 2025-09-04 07:25:26
+2025-09-04 07:26:14,217 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:27:07,307 - TradingSystem - WARNING - 第17次检查 - 无法获取信号数据
+2025-09-04 07:28:54,392 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:31:35,182 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:34:15,354 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:36:56,406 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:39:37,091 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:42:18,278 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:44:58,853 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:47:39,868 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:50:20,696 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:53:01,138 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:55:42,122 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 07:58:22,533 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 08:01:03,427 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 08:03:44,093 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 08:06:25,050 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 08:09:06,234 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 08:11:47,681 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 08:14:28,699 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 08:17:10,357 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 08:19:50,895 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 08:22:31,412 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 08:25:12,552 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据
+2025-09-04 08:27:09,553 - TradingSystem - INFO - 📡 第18次信号检查 - 2025-09-04 08:27:09
+2025-09-04 08:27:53,670 - TradingSystem - ERROR - 获取市场数据失败: 无法从合约API获取数据

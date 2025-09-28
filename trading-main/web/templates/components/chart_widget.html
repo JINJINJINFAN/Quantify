@@ -1,0 +1,86 @@
+<!-- 图表组件 -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">{{ title or '图表' }}</h5>
+        <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-outline-primary" onclick="refreshChart('{{ chart_id or 'chart' }}')">
+                <i class="fas fa-sync"></i>
+            </button>
+            <button type="button" class="btn btn-outline-success" onclick="exportChart('{{ chart_id or 'chart' }}')">
+                <i class="fas fa-download"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <canvas id="{{ chart_id or 'chart' }}" width="400" height="200"></canvas>
+    </div>
+</div>
+
+<script>
+let {{ chart_id or 'chart' }}_chart = null;
+
+function initChart_{{ chart_id or 'chart' }}() {
+    const ctx = document.getElementById('{{ chart_id or 'chart' }}').getContext('2d');
+    {{ chart_id or 'chart' }}_chart = new Chart(ctx, {
+        type: '{{ chart_type or "line" }}',
+        data: {
+            labels: {{ (labels | tojson) if labels is defined else '[]' }},
+            datasets: [{
+                label: '{{ dataset_label or "数据" }}',
+                data: {{ (data | tojson) if data is defined else '[]' }},
+                borderColor: '{{ border_color or "rgb(75, 192, 192)" }}',
+                backgroundColor: '{{ background_color or "rgba(75, 192, 192, 0.2)" }}',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: '{{ title or '图表' }}'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function refreshChart(chartId) {
+    if (chartId === '{{ chart_id or 'chart' }}') {
+        // 重新加载数据
+        fetch('{{ data_url or '#' }}')
+            .then(response => response.json())
+            .then(data => {
+                {{ chart_id or 'chart' }}_chart.data.labels = data.labels;
+                {{ chart_id or 'chart' }}_chart.data.datasets[0].data = data.data;
+                {{ chart_id or 'chart' }}_chart.update();
+            })
+            .catch(error => {
+                console.error('刷新图表失败:', error);
+            });
+    }
+}
+
+function exportChart(chartId) {
+    if (chartId === '{{ chart_id or 'chart' }}') {
+        const link = document.createElement('a');
+        link.download = '{{ title or 'chart' }}.png';
+        link.href = {{ chart_id or 'chart' }}_chart.toBase64Image();
+        link.click();
+    }
+}
+
+// 页面加载时初始化图表
+document.addEventListener('DOMContentLoaded', function() {
+    initChart_{{ chart_id or 'chart' }}();
+});
+</script> 
